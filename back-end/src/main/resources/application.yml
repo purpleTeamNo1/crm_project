@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: purple_team
+    password: crmproject
+    url: jdbc:postgresql://localhost:5432/crm-project
+
+  jpa:
+    generate-ddl: true  #ddl stands "Data Definition Language"
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 10
