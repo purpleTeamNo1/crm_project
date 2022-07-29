@@ -16,3 +16,6 @@ spring:
         format_sql: true
         jdbc:
           batch_size: 10
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
