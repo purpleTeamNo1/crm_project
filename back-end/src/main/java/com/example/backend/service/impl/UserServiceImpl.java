@@ -7,7 +7,6 @@ import com.example.backend.exception.ServiceException;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.UserService;
 import com.example.backend.utils.TokenUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +30,9 @@ public class UserServiceImpl implements UserService {
         }else {
             throw new ServiceException(Constants.CODE_600, "Username or password is wrong");
         }
+    }
+
+    public void registry(User user){
+        userRepository.save(user);
     }
 }
