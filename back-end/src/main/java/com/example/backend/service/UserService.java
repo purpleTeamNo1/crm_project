@@ -7,5 +7,5 @@ public interface UserService {
 
     UserDTO login(String username, String password);
 
-    void registry(User user);
+    boolean registry(User user);
 }

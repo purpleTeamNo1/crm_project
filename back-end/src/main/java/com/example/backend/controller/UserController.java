@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.common.Result;
 import com.example.backend.controller.DTO.UserDTO;
+import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,5 +35,12 @@ public class UserController {
         return Result.success(userDTO);
     }
 
-
+    @PostMapping("/Registry")
+    @ApiOperation("Registry")
+    public Result registry(@RequestBody User user){
+        if(userService.registry(user)){
+            return Result.success();
+        }
+        return Result.error("400","Can't register the user");
+    }
 }

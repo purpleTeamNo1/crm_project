@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public void registry(User user){
-        userRepository.save(user);
+    public boolean registry(User user){
+        return userRepository.save(user)!=null?true:false;
     }
 }
