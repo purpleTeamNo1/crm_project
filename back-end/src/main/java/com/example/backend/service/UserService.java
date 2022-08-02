@@ -1,11 +1,15 @@
 package com.example.backend.service;
 
-import com.example.backend.controller.DTO.UserDTO;
+import com.example.backend.common.Result;
+import com.example.backend.controller.DTO.LoginDTO;
+import com.example.backend.controller.DTO.RegistryDTO;
 import com.example.backend.entity.User;
+
+import java.security.NoSuchAlgorithmException;
 
 public interface UserService {
 
-    UserDTO login(String username, String password);
+    LoginDTO login(String username, String password);
 
-    boolean registry(User user);
+    Result registry(RegistryDTO registryDTO) throws NoSuchAlgorithmException;
 }

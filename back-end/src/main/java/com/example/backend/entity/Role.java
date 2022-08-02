@@ -3,7 +3,7 @@ package com.example.backend.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -21,7 +21,7 @@ public class Role {
     @Column(name = "perms", nullable = false)
     private String perms;
 
-    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
-//    @JoinColumn(name = "role_id")
-    private List<User> users;
+    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Set<User> users;
 }

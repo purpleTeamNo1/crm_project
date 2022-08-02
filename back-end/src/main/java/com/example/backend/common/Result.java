@@ -21,6 +21,8 @@ public class Result {
         return new Result(Constants.CODE_200, "", null);
     }
 
+    public static Result success(String msg){return new Result(Constants.CODE_200, msg, null);}
+
     public static Result success(Object data) {
         return new Result(Constants.CODE_200, "", data);
     }

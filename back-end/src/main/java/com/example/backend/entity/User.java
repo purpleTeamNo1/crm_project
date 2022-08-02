@@ -36,11 +36,11 @@ public class User {
     private String lastName;
 
     @Column(name = "email", length = 50, nullable = false)
-    @ApiModelProperty(required = false)
+    @ApiModelProperty
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
-    @ApiModelProperty(required = false)
+    @ApiModelProperty
     private Role role;
 }

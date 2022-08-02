@@ -1,6 +1,7 @@
 package com.example.backend;
 
-import com.example.backend.controller.DTO.UserDTO;
+import com.example.backend.controller.DTO.LoginDTO;
+import com.example.backend.controller.DTO.RegistryDTO;
 import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
 import com.example.backend.utils.Md5Utils;
@@ -18,19 +19,20 @@ public class UserTest {
 
     @Test
     public void loginTest(){
-        UserDTO userDTO = userService.login("admin","123456");
-        System.out.println(userDTO);
+        LoginDTO loginDTO = userService.login("admin","123456");
+        System.out.println(loginDTO);
     }
 
     @Test
-    public void registryTest(){
-        User user = new User();
-        user.setUsername("johndoe1");
-        user.setPassword("123456");
-        user.setEmail("johndoe@gmail.com");
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        System.out.println(userService.registry(user));
+    public void registryTest() throws NoSuchAlgorithmException {
+        RegistryDTO registryDTO = new RegistryDTO();
+        registryDTO.setUsername("johndoe1");
+        registryDTO.setPassword("123456");
+        registryDTO.setEmail("johndoe@gmail.com");
+        registryDTO.setFirstName("John");
+        registryDTO.setLastName("Doe");
+        registryDTO.setRoleId(1);
+        System.out.println(userService.registry(registryDTO));
     }
 
     @Test

@@ -1,10 +1,10 @@
 package com.example.backend.controller.DTO;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class LoginDTO {
     private String username;
+    private String password;
     private String token;
 }
