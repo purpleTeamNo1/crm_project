@@ -14,9 +14,13 @@ import com.example.backend.utils.Md5Utils;
 import com.example.backend.utils.TokenUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -60,5 +64,14 @@ public class UserServiceImpl implements UserService {
         user.setRole(role);
         userRepository.save(user);
         return Result.success("New user has been added!");
+    }
+
+    public List<User> findAllUser(int page, int size){
+        List all = userRepository.findAll(PageRequest.of(page,size, Sort.by("userId").ascending())).get().toList();
+        return all;
+    }
+
+    public void deleteUser(int id){
+        userRepository.deleteById(id);
     }
 }

@@ -19,3 +19,7 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+# prevent empty beans can't be serialized
+  jackson:
+    serialization:
+      fail-on-empty-beans: false

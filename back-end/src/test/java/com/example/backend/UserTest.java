@@ -8,8 +8,10 @@ import com.example.backend.utils.Md5Utils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @SpringBootTest
 public class UserTest {
@@ -38,5 +40,11 @@ public class UserTest {
     @Test
     public void md5GeneratorTest() throws NoSuchAlgorithmException {
         System.out.println(Md5Utils.md5Generator("test"));
+    }
+
+    @Test
+    public void findallTest(){
+        List<User> all = userService.findAllUser(0,5);
+        System.out.println(all);
     }
 }

@@ -10,9 +10,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -43,5 +45,18 @@ public class UserController {
     @ApiOperation("Registry")
     public Result registry(@RequestBody RegistryDTO registryDTO) throws NoSuchAlgorithmException {
         return userService.registry(registryDTO);
+    }
+
+    @GetMapping("/findall")
+    @ApiOperation(("find all user, sort by id asc"))
+    public List<User> findAll(@RequestParam int page,
+                              @RequestParam int size){
+        return userService.findAllUser(page,size);
+    }
+
+    @DeleteMapping("/delete")
+    @ApiOperation("Delete user by id")
+    public void deleteUser(@RequestParam int id){
+        userService.deleteUser(id);
     }
 }

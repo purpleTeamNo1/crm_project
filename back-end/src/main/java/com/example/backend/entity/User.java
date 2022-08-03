@@ -1,16 +1,21 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
+@ToString(exclude = {"role"})
 @Entity
 @Table(name = "tb_user")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 @ApiModel
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +44,14 @@ public class User {
     @ApiModelProperty
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     @ApiModelProperty
     private Role role;
+
+//    @JsonManagedReference
+//    public Role getRole(){
+//        return this.role;
+//    }
 }
