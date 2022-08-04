@@ -28,4 +28,4 @@
     pathmatch:
       matching-strategy: ant_path_matcher
   ~~~
-  Then start the application server and open url: localhost:8080/swagger-ui/, the swagger-ui page will display.
+  Then start the application server and open url: [localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/), the swagger-ui page will display.
