@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @ToString(exclude = {"role"})
@@ -50,8 +52,7 @@ public class User implements Serializable {
     @ApiModelProperty
     private Role role;
 
-//    @JsonManagedReference
-//    public Role getRole(){
-//        return this.role;
-//    }
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Todos> todosList;
 }

@@ -28,3 +28,5 @@
       serialization:
         fail-on-empty-beans: false
   ~~~
+  But I doubt it still have problem when we try to get the list of user for 1 role. The front-end may not be able to get the list because it will not be serialized 
+  to JSON. I will try later when time is allowed.
