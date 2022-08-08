@@ -3,6 +3,7 @@ package com.example.backend.service.impl;
 import com.example.backend.controller.DTO.ClientDTO;
 import com.example.backend.entity.Client;
 import com.example.backend.repository.ClientRepository;
+import com.example.backend.service.ClientService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClientServiceImpl {
+public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
@@ -41,7 +42,7 @@ public class ClientServiceImpl {
     //3. update TodoList, using addTodo() method but using clientId as condition for updating.
 
     // 4. inactive TodoList
-    public boolean inactiveTodo(int clientId){
+    public boolean inactiveClient(int clientId){
         Client client= clientRepository.findById(clientId).get();
         if(client!= null){
             client.setStatus(0);

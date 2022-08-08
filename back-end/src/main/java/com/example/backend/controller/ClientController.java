@@ -1,9 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.controller.DTO.ClientDTO;
-import com.example.backend.controller.DTO.TodoDTO;
 import com.example.backend.entity.Client;
-import com.example.backend.entity.Todos;
 import com.example.backend.service.ClientService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
