@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "tb_todos")
+@ToString(exclude = {"user"})
 @ApiModel
 public class Todos implements Serializable {
     @Id
@@ -46,8 +48,8 @@ public class Todos implements Serializable {
     private String location;
 
     @JsonManagedReference
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ApiModelProperty
     private User user;
 }

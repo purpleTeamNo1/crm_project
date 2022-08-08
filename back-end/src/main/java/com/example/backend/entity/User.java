@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@ToString(exclude = {"role"})
+@ToString(exclude = {"role","todoList"})
 @Entity
 @Table(name = "tb_user")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
@@ -53,6 +53,6 @@ public class User implements Serializable {
     private Role role;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Todos.class, fetch = FetchType.LAZY)
     private List<Todos> todosList;
 }
