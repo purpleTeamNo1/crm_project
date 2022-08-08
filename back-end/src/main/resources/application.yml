@@ -6,9 +6,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/crm-project
 
   jpa:
-    generate-ddl: true  #ddl stands "Data Definition Language"
-    hibernate:
-      ddl-auto: update
+#    generate-ddl: true  #ddl stands "Data Definition Language"
+#    hibernate:
+#      ddl-auto: update
 
     show-sql: true
     properties:

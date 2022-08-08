@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
         User userCheck = userRepository.findUserByUsername(registryDTO.getUsername());
         if(userCheck != null){
-            return Result.error("600","The username has existed!");
+            return Result.error("600","The user has existed!");
         }
         User user = new User();
         String passwordMd5 = Md5Utils.md5Generator(registryDTO.getPassword());

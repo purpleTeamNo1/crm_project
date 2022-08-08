@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,11 +9,13 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Data
-@ToString(exclude = {"role"})
+@ToString(exclude = {"role","todoList"})
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tbuser")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 @ApiModel
 public class User implements Serializable {
@@ -33,16 +36,19 @@ public class User implements Serializable {
     private String password;
 
     @ApiModelProperty(required = true)
-    @Column(name = "first_name", length = 50, nullable = false)
+    @Column(name = "firstname", length = 50, nullable = false)
     private String firstName;
 
     @ApiModelProperty(required = true)
-    @Column(name = "last_name", length = 50, nullable = false)
+    @Column(name = "lastname", length = 50, nullable = false)
     private String lastName;
 
     @Column(name = "email", length = 50, nullable = false)
     @ApiModelProperty
     private String email;
+
+    @Column(name = "last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+    private Timestamp lastUpdate;
 
     @JsonManagedReference
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -50,8 +56,7 @@ public class User implements Serializable {
     @ApiModelProperty
     private Role role;
 
-//    @JsonManagedReference
-//    public Role getRole(){
-//        return this.role;
-//    }
+//    @JsonBackReference
+//    @OneToMany(targetEntity = Todos.class, fetch = FetchType.LAZY)
+//    private List<Todos> todosList;
 }
