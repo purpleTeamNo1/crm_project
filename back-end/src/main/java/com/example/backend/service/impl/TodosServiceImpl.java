@@ -1,14 +1,20 @@
 package com.example.backend.service.impl;
 
 import com.example.backend.controller.DTO.TodoDTO;
+import com.example.backend.entity.Client;
 import com.example.backend.entity.Todos;
 import com.example.backend.entity.User;
+import com.example.backend.repository.ClientRepository;
 import com.example.backend.repository.TodosRepository;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.TodosService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TodosServiceImpl implements TodosService {
@@ -17,14 +23,24 @@ public class TodosServiceImpl implements TodosService {
     private TodosRepository todosRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private ClientRepository clientRepository;
 
-    public void addTodo(TodoDTO todoDTO){
+    //1. Create TodoList
+    public void addTodo(TodoDTO todoDTO) {
         Todos todos = new Todos();
         BeanUtils.copyProperties(todoDTO, todos);
-        User user = userRepository.findById(todoDTO.getUserId()).get();
-        user.getTodosList().add(todos);
-        todos.setUser(user);
+        Client client = clientRepository.findById(todoDTO.getClientId());
+        client.getTodosList().add(todos);
+        todos.setClient(client);
         todosRepository.save(todos);
     }
+
+    //2. query TodoList
+    public List<Todos> findAllTodo(int page, int size, String sortBy){
+        List allTodos = todosRepository.findAll(PageRequest.of(page,size, Sort.by(sortBy).ascending())).get().toList();
+//        List allTodos = todosRepository.findAllByOrderByIdAsc(PageRequest.of(page,size));
+        return allTodos;
+    }
+
+
 }

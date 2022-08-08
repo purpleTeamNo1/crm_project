@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,11 +8,13 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @ToString(exclude = {})
 @Entity
-@Table(name = "tb_client")
+@Table(name = "client")
 @ApiModel
 public class Client {
 
@@ -22,49 +25,82 @@ public class Client {
     private int clientId;
 
     @Column(name = "status", nullable = false)
-    private int status = 2;
+    private short status = 2;
 
-    @Column(name = "firstname", nullable = false, length = 50)
+    @Column(name = "firstname", length = 50)
     private String firstname;
 
-    @Column(name = "lastname", nullable = false, length = 50)
+    @Column(name = "lastname", length = 50)
     private String lastName;
 
-    @Column(name = "date_of_birth", nullable = false)
+    @Column(name = "dateofbirth")
     private Date dateOfBirth;
 
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private int age;
 
-    @Column(name = "home_phone", length = 10)
+    @Column(name = "homephone", length = 10)
     private String homePhone;
 
-    @Column(name = "cell_phone", length = 10)
+    @Column(name = "cellphone", length = 10)
     private String cellPhone;
 
     @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name = "address", length = 50, nullable = false)
+    @Column(name = "address", length = 50)
     private String address;
 
-    @Column(name = "postal_code", length = 7, nullable = false)
+    @Column(name = "postalcode", length = 7)
     private String postalCode;
 
     @Column(name = "SIN", length = 9)
     private String sin;
 
-    @Column(name = "gender", length = 50, nullable = false)
+    @Column(name = "gender", length = 50)
     private String gender;
 
-    @Column(name = "marital_status", length = 20, nullable = false)
+    @Column(name = "maritalstatus", length = 20)
     private String maritalStatus;
 
-    @Column(name = "citizenship", length = 50, nullable = false)
+    @Column(name = "citizenship", length = 50)
     private String citizenship;
 
-    @Column(name = "source", length = 50, nullable = false)
+    @Column(name = "source", length = 50)
     private String source;
 
+    @Column(name = "referredby", length = 50)
+    private String referredBy;
 
+    @Column(name = "giftgiven")
+    private boolean giftGiven;
+
+    @Column(name = "planid", length = 50)
+    private String planId;
+
+    @Column(name = "segfundnum", length = 50)
+    private String segfundNum;
+
+    @Column(name = "wechatid", length = 50)
+    private String wechatId;
+
+    @Column(name = "linkedinid", length = 50)
+    private String linkedinId;
+
+    @Column(name = "facebookid", length = 50)
+    private String facebookId;
+
+    @Column(name = "twitterId", length = 50)
+    private String twitterId;
+
+    @Column(name = "instagramid", length = 50)
+    private String instagramId;
+
+    @Column(name = "last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp lastUpdate;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "client",  fetch = FetchType.LAZY)
+//    @JoinColumn(name = "client_id")
+    private List<Todos> todosList;
 }

@@ -13,13 +13,13 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tb_todos")
+@Table(name = "todolist")
 @ToString(exclude = {"user"})
 @ApiModel
 public class Todos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "todo_id")
+    @Column(name = "todoid")
     @ApiModelProperty(allowEmptyValue = true)
     private int todoId;
 
@@ -34,22 +34,22 @@ public class Todos implements Serializable {
     @ApiModelProperty(required = true)
     private int priority;
 
-    @Column(name="entry_time", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+    @Column(name="last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     @ApiModelProperty(required = true)
-    private Timestamp entryTime;
+    private Timestamp lastUpdate;
 
-    @Column(name = "due_date")
+    @Column(name = "duedate")
     private Date dueDate;
 
-    @Column(name="iscomplete", nullable = false)
+    @Column(name="completion", nullable = false)
     private boolean isComplete;
 
     @Column(name="location", length=100)
     private String location;
 
     @JsonManagedReference
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne(targetEntity = Client.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     @ApiModelProperty
-    private User user;
+    private Client client;
 }

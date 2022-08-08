@@ -18,9 +18,9 @@ public class TodoController {
     @Autowired
     private TodosService todosService;
 
-    @ApiOperation("add todo Items")
-    @PostMapping("/add")
-    public void addTodo(@RequestBody TodoDTO todoDTO){
-        todosService.addTodo(todoDTO);
-    }
+//    @ApiOperation("add todo Items")
+//    @PostMapping("/add")
+//    public void addTodo(@RequestBody TodoDTO todoDTO){
+//        todosService.addTodo(todoDTO);
+//    }
 }

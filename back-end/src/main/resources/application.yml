@@ -8,7 +8,7 @@ spring:
   jpa:
     generate-ddl: true  #ddl stands "Data Definition Language"
     hibernate:
-      ddl-auto: update
+#      ddl-auto: update
 
     show-sql: true
     properties:
