@@ -1,6 +1,6 @@
-drop schema if exists crmproject cascade;
-create schema crmproject;
-set search_path to crmproject;
+-- drop schema if exists crmproject cascade;
+-- create schema crmproject;
+-- set search_path to crmproject;
 
 drop table if exists role;
 create table role
@@ -120,7 +120,7 @@ create table toDoList
     priority    smallint                            not null,
     dueDate     date,
     completion  boolean                             not null,
-    location    varchar(100)                        not null,
+    location    varchar(100)                       ,
     note        varchar(50),
     last_update timestamp default CURRENT_TIMESTAMP not null,
     client_id   integer references client
