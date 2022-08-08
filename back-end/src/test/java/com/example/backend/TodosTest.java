@@ -37,20 +37,21 @@ public class TodosTest {
         todos.setDescription("This is just for test");
         todos.setPriority(1);
         todos.setComplete(false);
-        Client client = clientRepository.findById(1);
-        System.out.println(client);
-//        client.getTodosList().add(todos);
-//        todos.setClient(client);
-//
-//        repository.save(todos);
+        Client client = clientRepository.findById(1).get();
+//        System.out.println(client);
+        client.getTodosList().add(todos);
+        todos.setClient(client);
+
+        repository.save(todos);
 
 //        System.out.println(repository.save(todos));
 
     }
 
     @Test
+    @Transactional
     public void findAllByOrderTest(){
-        List<Todos> allTodos = todosService.findAllTodo(1,5,"todoId");
+        List<Todos> allTodos = todosService.findAllTodo(0,5);
         System.out.println(allTodos.stream().count());
     }
 }

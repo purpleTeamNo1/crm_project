@@ -11,5 +11,5 @@ public interface TodosService {
 
 //    List<Todos> findAllTodo(int page, int size);
 
-    List<Todos> findAllTodo(int page, int size, String sortBy);
+    List<Todos> findAllTodo(int page, int size);
 }

@@ -90,7 +90,7 @@ public class Client {
     @Column(name = "facebookid", length = 50)
     private String facebookId;
 
-    @Column(name = "twitterId", length = 50)
+    @Column(name = "twitterid", length = 50)
     private String twitterId;
 
     @Column(name = "instagramid", length = 50)
@@ -101,6 +101,5 @@ public class Client {
 
     @JsonBackReference
     @OneToMany(mappedBy = "client",  fetch = FetchType.LAZY)
-//    @JoinColumn(name = "client_id")
     private List<Todos> todosList;
 }

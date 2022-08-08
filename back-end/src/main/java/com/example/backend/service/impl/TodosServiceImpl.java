@@ -29,15 +29,15 @@ public class TodosServiceImpl implements TodosService {
     public void addTodo(TodoDTO todoDTO) {
         Todos todos = new Todos();
         BeanUtils.copyProperties(todoDTO, todos);
-        Client client = clientRepository.findById(todoDTO.getClientId());
+        Client client = clientRepository.findById(todoDTO.getClientId()).get();
         client.getTodosList().add(todos);
         todos.setClient(client);
         todosRepository.save(todos);
     }
 
     //2. query TodoList
-    public List<Todos> findAllTodo(int page, int size, String sortBy){
-        List allTodos = todosRepository.findAll(PageRequest.of(page,size, Sort.by(sortBy).ascending())).get().toList();
+    public List<Todos> findAllTodo(int page, int size){
+        List allTodos = todosRepository.findAll(PageRequest.of(page,size, Sort.by("todoId").ascending())).get().toList();
 //        List allTodos = todosRepository.findAllByOrderByIdAsc(PageRequest.of(page,size));
         return allTodos;
     }
