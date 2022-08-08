@@ -25,7 +25,7 @@ public class Client {
     private int clientId;
 
     @Column(name = "status", nullable = false)
-    private short status = 2;
+    private int status;
 
     @Column(name = "firstname", length = 50)
     private String firstname;

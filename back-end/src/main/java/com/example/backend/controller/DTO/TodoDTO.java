@@ -9,6 +9,9 @@ import java.sql.Timestamp;
 @Data
 public class TodoDTO {
     @ApiModelProperty(required = true)
+    private int todoId;
+
+    @ApiModelProperty(required = true)
     private String title;
 
     private String description;

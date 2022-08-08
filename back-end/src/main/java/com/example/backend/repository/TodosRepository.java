@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface TodosRepository extends JpaRepository<Todos, Integer> {
 
+//    List<Todos> findAllById(int id);
 }

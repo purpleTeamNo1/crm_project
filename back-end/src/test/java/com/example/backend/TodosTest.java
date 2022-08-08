@@ -51,7 +51,27 @@ public class TodosTest {
     @Test
     @Transactional
     public void findAllByOrderTest(){
-        List<Todos> allTodos = todosService.findAllTodo(0,5);
-        System.out.println(allTodos.stream().count());
+        List<Todos> allTodos = todosService.findAllTodo(0,5, "dueDate");
+//        System.out.println(allTodos.stream().count());
+        System.out.println(allTodos);
+    }
+
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void updateTodoTest(){
+        Todos todos = new Todos();
+        todos.setTodoId(6);
+        todos.setTitle("update test");
+        todos.setDescription("This is just for update test");
+        todos.setPriority(1);
+        todos.setComplete(false);
+        Client client = clientRepository.findById(1).get();
+//        System.out.println(client);
+        client.getTodosList().add(todos);
+        todos.setClient(client);
+
+        repository.save(todos);
     }
 }

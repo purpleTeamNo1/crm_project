@@ -11,5 +11,9 @@ public interface TodosService {
 
 //    List<Todos> findAllTodo(int page, int size);
 
-    List<Todos> findAllTodo(int page, int size);
+    List<Todos> findAllTodo(int page, int size, String orderBy);
+
+    List<Todos> findAllTodoByClientId(int page, int size, int clientId);
+
+    boolean inactiveTodo(int todoId);
 }

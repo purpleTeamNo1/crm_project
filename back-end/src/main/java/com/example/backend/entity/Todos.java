@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "todolist")
-@ToString(exclude = {"user"})
+@ToString(exclude = {"client"})
 @ApiModel
 public class Todos implements Serializable {
     @Id

@@ -58,5 +58,5 @@ public class UserController {
     @ApiOperation("Delete user by id")
     public void deleteUser(@RequestParam int id){
         userService.deleteUser(id);
-    }
+    }// better to return a Result object
 }
