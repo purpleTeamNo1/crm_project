@@ -37,17 +37,21 @@ public class TodosServiceImpl implements TodosService {
     }
 
     //2. query TodoList
+    //2.1 query all TodoList order by provide condition
     public List<Todos> findAllTodo(int page, int size, String orderBy){
         List allTodos = todosRepository.findAll(PageRequest.of(page,size, Sort.by(orderBy).ascending())).get().toList();
 //        List allTodos = todosRepository.findAllByOrderByIdAsc(PageRequest.of(page,size));
         return allTodos;
     }
 
+    //2.1 query all todos by given client Id
     public List<Todos> findAllTodoByClientId(int page, int size, int clientId){
         Client client = clientRepository.findById(clientId).get();
         List<Todos> todos = todosRepository.findAllByClient(client);
         return todos;
     }
+
+
 
     //3. update TodoList, using addTodo() method but using todoId as condition for updating.
 

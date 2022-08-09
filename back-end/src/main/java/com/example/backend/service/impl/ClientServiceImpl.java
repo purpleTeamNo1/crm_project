@@ -6,6 +6,8 @@ import com.example.backend.repository.ClientRepository;
 import com.example.backend.service.ClientService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(client);
     }
 
+    // 2. query client
     //2.1 query all clients order by define property
     public List<Client> findAllClient(int page, int size, String orderBy){
         List clients = clientRepository.findAll(PageRequest.of(page,size, Sort.by(orderBy).ascending())).get().toList();
@@ -31,13 +34,26 @@ public class ClientServiceImpl implements ClientService {
         return clients;
     }
 
-    // 2.2 query client by define properties dynamically
-//    public List<Client> findAllTodoByLastName(int page, int size, int clientId){
-//        List<Integer> ids = new ArrayList<>();
-//        ids.add(clientId);
-//        List<Todos> todos = todosRepository.findAllById(ids);
-//        return todos;
-//    }
+     //2.2 query client by define properties dynamically
+    public List<Client> findAllClientByDync(String firstName, String lastName, String homePhone,String cellPhone, String email){
+        Client client = new Client();
+        client.setFirstname(firstName);
+        client.setLastName(lastName);
+        client.setHomePhone(homePhone);
+        client.setCellPhone(cellPhone);
+        client.setEmail(email);
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnorePaths("clientId","giftGiven","status","age")
+                .withIgnoreCase("firstName", "lastName")
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+        Example<Client> clientExample = Example.of(client,matcher);
+
+        List<Client> clientList = clientRepository.findAll(clientExample);
+
+        return clientList;
+    }
 
     //3. update TodoList, using addTodo() method but using clientId as condition for updating.
 

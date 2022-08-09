@@ -1,5 +1,7 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
 
@@ -14,6 +16,7 @@ import java.sql.Timestamp;
 
 public class Insurance {
     @Id
+    @Column(name = "insuranceid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int insuranceId;
 
@@ -59,6 +62,7 @@ public class Insurance {
     @Column(name = "last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp lastUpdate;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "insurance", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private Product product;
 }

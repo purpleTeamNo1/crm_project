@@ -1,8 +1,11 @@
 package com.example.backend.controller;
 
 import com.example.backend.controller.DTO.ClientDTO;
+import com.example.backend.controller.DTO.QueryClientDTO;
 import com.example.backend.entity.Client;
+import com.example.backend.entity.Todos;
 import com.example.backend.service.ClientService;
+import com.example.backend.service.TodosService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,7 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
 
     @ApiOperation("add client")
     @PostMapping("/add")
@@ -35,15 +39,18 @@ public class ClientController {
        return clientService.inactiveClient(clientId);
     }
 
-    @ApiOperation("find all todo items")
-    @GetMapping("/findAll")
-    public List<Client> findAll(@RequestParam int page, int size, String sortBy){
-        return clientService.findAllClient(page, size, sortBy);
+
+    @ApiOperation("find all client by different conditions dynamically")
+    @PostMapping("/findByDync")
+    public List<Client> findByDync(@RequestBody QueryClientDTO queryClientDTO){
+        String firstName = queryClientDTO.getFirstName();
+        String lastName = queryClientDTO.getLastName();
+        String homePhone = queryClientDTO.getHomePhone();
+        String cellPhone = queryClientDTO.getCellPhone();
+        String email = queryClientDTO.getEmail();
+
+        List<Client> clients = clientService.findAllClientByDync(firstName, lastName, homePhone, cellPhone, email);
+        return clients;
     }
 
-//    @ApiOperation("find all todo items by client Id")
-//    @GetMapping("/findById")
-//    public List<Todos> findByClientId(@RequestParam int page, int size, int clientId){
-//        return todosService.findAllTodoByClientId(page, size, clientId);
-//    }
 }

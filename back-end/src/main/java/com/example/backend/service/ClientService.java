@@ -10,5 +10,7 @@ public interface ClientService {
 
     List<Client> findAllClient(int page, int size, String orderBy);
 
+    List<Client> findAllClientByDync(String firstName, String lastName, String homePhone,String cellPhone, String email);
+
     boolean inactiveClient(int clientId);
 }
