@@ -44,9 +44,8 @@ public class TodosServiceImpl implements TodosService {
     }
 
     public List<Todos> findAllTodoByClientId(int page, int size, int clientId){
-        List<Integer> ids = new ArrayList<>();
-        ids.add(clientId);
-        List<Todos> todos = todosRepository.findAllById(ids);
+        Client client = clientRepository.findById(clientId).get();
+        List<Todos> todos = todosRepository.findAllByClient(client);
         return todos;
     }
 

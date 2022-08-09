@@ -1,10 +1,12 @@
 package com.example.backend.controller.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+
 
 @Data
 public class TodoDTO {
@@ -21,8 +23,9 @@ public class TodoDTO {
     @ApiModelProperty(required = true)
     private int priority = 1;
 
-    @ApiModelProperty(required = true)
-    private Timestamp lastUpdate;
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",  timezone="GMT-4")
+//    @ApiModelProperty(required = true)
+//    private Timestamp lastUpdate;
 
     @ApiModelProperty(required = true)
     private boolean isComplete;
