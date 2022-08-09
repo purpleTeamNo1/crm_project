@@ -142,7 +142,7 @@ create table Insurance
     policyNumber         varchar(50) unique,
     applicationNumber    varchar(50) unique,
     applicationDate       date,
-    COI                  decimal(13, 2),
+    COI                  varchar(50),
     enforcementDate      DATE,
     maturityDate        DATE,
     coverageAmount      decimal(13, 2),
@@ -150,7 +150,7 @@ create table Insurance
     PaymentTime      SMALLINT,
     riders varchar(50) ,
     province             varchar(50),
-    Note                 varchar(50),
+    Note                 varchar(255),
     last_update          timestamp default CURRENT_TIMESTAMP not null
 
 );
@@ -177,20 +177,20 @@ values ('parca',1),
 drop table if exists ClientProduct;
 create table ClientProduct
 (
-    client_id
+    sys_client_id
                 integer references client
                                                     not null,
-    productID
+    sys_product_id
                 integer references product
                                                     not null,
-    primary key (client_id, ProductID),
+    primary key (sys_client_id, sys_product_id),
 --     policyNumber  VARCHAR(50),
 --     startDate   date,
 --     endDate     date,
 -- --     coverage    decimal(13, 2),
     last_update timestamp default CURRENT_TIMESTAMP not null
 );
- insert into ClientProduct (client_id, ProductID)
+ insert into ClientProduct (sys_client_id, sys_product_id)
 values (1, 2),
        (2, 1),
        (3, 4),
@@ -210,8 +210,8 @@ select * from todolist where priority =1;
 SELECT C.CLIENT_ID, PRIORITY ,DUEDATE,P.PRODUCTCODE,firstName,lastName
     FROM  CLIENT C
     INNER JOIN TODOLIST T ON C.CLIENT_ID = T.client_id
-    INNER JOIN CLIENTPRODUCT CP ON CP.CLIENT_ID=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.productID
+    INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
 WHERE LASTNAME = ('Tyler')
 ORDER BY DUEDATE;
@@ -219,8 +219,8 @@ ORDER BY DUEDATE;
 -- search by customer last name, the insurance policy number, coverage amount, productcode, etc.
 SELECT C.CLIENT_ID, P.PRODUCTCODE, i.policyNumber,i.coverageAmount,firstName,lastName
     FROM  CLIENT C
-        INNER JOIN CLIENTPRODUCT CP ON CP.CLIENT_ID=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.productID
+        INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
 WHERE C.firstName = ('TYLER')
 ORDER BY policyNumber ;
@@ -228,8 +228,8 @@ ORDER BY policyNumber ;
 --sum of the total coi(cost of insurance) & coverage amount by each client's name
 SELECT firstName,lastName,sum(i.coi) Total_CostOf_Insurance,sum(i.coverageAmount) Total_Coverage_Amount
     FROM  CLIENT C
-        INNER JOIN CLIENTPRODUCT CP ON CP.CLIENT_ID=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.productID
+        INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
 group by c.lastName,c.firstName
 ORDER BY c.lastname,c.firstName ;

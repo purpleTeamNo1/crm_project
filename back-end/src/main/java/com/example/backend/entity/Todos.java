@@ -34,8 +34,7 @@ public class Todos implements Serializable {
     @ApiModelProperty(required = true)
     private int priority;
 
-    @Column(name="last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
-    @ApiModelProperty(required = true)
+    @Column(name="last_update", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp lastUpdate;
 
     @Column(name = "duedate")
@@ -47,6 +46,8 @@ public class Todos implements Serializable {
     @Column(name="location", length=100)
     private String location;
 
+    @Column(name = "note")
+    private String note;
     @JsonManagedReference
     @ManyToOne(targetEntity = Client.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")

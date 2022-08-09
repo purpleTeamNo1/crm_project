@@ -32,6 +32,8 @@ public class TodoDTO {
 
     private String location;
 
+    private String note;
+
     private int clientId;
 
 }

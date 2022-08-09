@@ -89,6 +89,4 @@ public class ClientDTO {
     @ApiModelProperty
     private String instagramId;
 
-    @ApiModelProperty(required = true)
-    private Timestamp lastUpdate;
 }

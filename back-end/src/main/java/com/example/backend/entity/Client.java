@@ -102,4 +102,10 @@ public class Client {
     @JsonBackReference
     @OneToMany(mappedBy = "client",  fetch = FetchType.LAZY)
     private List<Todos> todosList;
+
+    @ManyToMany(targetEntity = Product.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "clientproduct",
+    joinColumns = {@JoinColumn(name = "sys_client_id",referencedColumnName = "client_id")},
+    inverseJoinColumns = {@JoinColumn(name = "sys_product_id", referencedColumnName = "productid")})
+    private List<Product> productList;
 }
