@@ -20,9 +20,9 @@ public class TodoController {
 
     @ApiOperation("add todo Items")
     @PostMapping("/add")
-    public void addTodo(@RequestBody TodoDTO todoDTO){
+    public Todos addTodo(@RequestBody TodoDTO todoDTO){
         todoDTO.setTodoId(0);
-        todosService.addTodo(todoDTO);
+        return todosService.addTodo(todoDTO);
     }
 
     @ApiOperation("update current todo Items")
@@ -34,10 +34,7 @@ public class TodoController {
     @ApiOperation("Inactive todo items")
     @GetMapping("/inactive")
     public boolean inactiveTodo(@RequestParam int todoId){
-        if(todosService.inactiveTodo(todoId)){
-            return true;
-        }
-        return false;
+        return todosService.inactiveTodo(todoId);
     }
 
     @ApiOperation("find all todo items")
