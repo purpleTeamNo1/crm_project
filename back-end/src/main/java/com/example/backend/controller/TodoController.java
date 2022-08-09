@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/todos")
-@Api(tags = "Controller for todolist")
+@Api(tags = "todolist-controller")
 public class TodoController {
 
     @Autowired

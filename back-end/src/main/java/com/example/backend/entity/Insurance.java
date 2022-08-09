@@ -20,8 +20,8 @@ public class Insurance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int insuranceId;
 
-    @Column(name = "productcode", length = 50)
-    private String productCode;
+//    @Column(name = "productcode", length = 50)
+//    private String productCode;
 
     @Column(name = "policynumber", length = 50)
     private String policyNumber;
@@ -32,8 +32,8 @@ public class Insurance {
     @Column(name = "applicationdate")
     private Date applicationDate;
 
-    @Column(name="coi", length = 50)
-    private String coi;
+    @Column(name="coi", columnDefinition = "Decimal(13,2)")
+    private double coi;
 
     @Column(name = "enforcementdate")
     private Date enforcementDate;
@@ -63,6 +63,6 @@ public class Insurance {
     private Timestamp lastUpdate;
 
     @JsonBackReference
-    @OneToOne(mappedBy = "insurance", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "insurance", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Product product;
 }

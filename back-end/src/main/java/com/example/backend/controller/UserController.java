@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Api(tags = "the controller related to user operation, such as login, register, password reset and so on")
+@Api(tags = "user-controller")
 public class UserController {
 
     @Autowired

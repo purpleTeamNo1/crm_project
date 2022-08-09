@@ -25,7 +25,7 @@ public class Product {
     private Timestamp lastUpdate;
 
     @JsonManagedReference
-    @OneToOne(targetEntity = Insurance.class, cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Insurance.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "insuranceid")
     private Insurance insurance;
 

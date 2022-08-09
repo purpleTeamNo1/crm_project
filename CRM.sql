@@ -138,7 +138,6 @@ drop table if exists Insurance;
 create table Insurance
 (
     insuranceID          integer generated always as identity primary key,
-    productCode          varchar(50) unique                  not null,
     policyNumber         varchar(50) unique,
     applicationNumber    varchar(50) unique,
     applicationDate       date,
@@ -164,7 +163,7 @@ drop table if exists Product;
 create table Product
 (
     ProductID   integer generated always as identity primary key,
-    ProductCode varchar(50)                         not null,
+    ProductCode varchar(50)                   unique not null,
     InsuranceID integer references Insurance,
     last_update timestamp default CURRENT_TIMESTAMP
 );
