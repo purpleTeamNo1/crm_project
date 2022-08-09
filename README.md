@@ -4,6 +4,6 @@ It's a project for a financial advisor, which is also the final project of syste
 ## Team member
 Li Fang She, Morteza Khanjanzadeh, Tyler Nelson, Xiao Feng Huang
 ## technology stack
-- front-end: React.js
+- front-end: Javascript
 - back-end: Springboot, spring data JPA, swagger, shiro
 - database: postgresql
