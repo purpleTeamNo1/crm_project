@@ -1,0 +1,200 @@
+/* screen - 00-login */
+
+.x00-login {
+  background-color: #fefefe;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-end;
+  min-height: 1080px;
+  min-width: 1920px;
+  width: 100%;
+}
+
+.x00-login .image_of_sunflower {
+  flex: 1;
+  object-fit: cover;
+}
+
+.x00-login .login-panel {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 41px 71px;
+  width: 624px;
+}
+
+.x00-login .profile_image {
+  border-radius: 130px;
+  height: 260px;
+  margin-left: 2.0px;
+  margin-top: 193px;
+  object-fit: cover;
+  width: 260px;
+}
+
+.x00-login .input_fields {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2.0px;
+  margin-top: 101px;
+  min-height: 317px;
+  width: 414px;
+}
+
+.x00-login ._username-container {
+  border-radius: 30px;
+  height: 63px;
+  position: relative;
+  width: 414px;
+}
+
+.x00-login .input_username {
+  align-items: flex-start;
+  background-color: var(--white);
+  border-radius: 30px;
+  display: flex;
+  height: 63px;
+  left: 0;
+  min-width: 414px;
+  padding: 16.0px 31.0px;
+  position: absolute;
+  top: 0;
+}
+
+.x00-login .input_username_icon {
+  align-items: flex-start;
+  display: flex;
+  height: 30px;
+  min-width: 30px;
+  padding: 2.8px 2.8px;
+}
+
+.x00-login .icon-user {
+  height: 24px;
+  object-fit: cover;
+  width: 24px;
+}
+
+.x00-login .label_enter {
+  background-color: transparent;
+  border: 0;
+  color: var(--shadow-blue);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  height: 19px;
+  left: 83px;
+  letter-spacing: 0.24px;
+  line-height: 12px;
+  padding: 0;
+  position: absolute;
+  top: 23px;
+  width: 277px;
+}
+
+.x00-login .label_enter::placeholder {
+  color: #7e84a399;
+}
+
+.x00-login ._password-container {
+  border-radius: 30px;
+  height: 63px;
+  margin-top: 50px;
+  position: relative;
+  width: 414px;
+}
+
+.x00-login .input_password {
+  background-color: var(--white);
+  border-radius: 30px;
+  display: flex;
+  height: 63px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 414px;
+}
+
+.x00-login .input_password_icon {
+  display: flex;
+  height: 25px;
+  margin-left: 35px;
+  margin-top: 18px;
+  width: 25px;
+}
+
+.x00-login .icon {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1px;
+  margin-right: 1px;
+  width: 23px;
+}
+
+.x00-login .a0ff502c-3cea-4063-8014-075d2170c347 {
+  flex: 1;
+  height: 11px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: -1px;
+  max-height: 11px;
+  object-fit: cover;
+}
+
+.x00-login .icon_area {
+  border: 2px solid #1c2126;
+  border-radius: 2px;
+  flex: 1;
+  height: 13px;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+  max-height: 13px;
+}
+
+.x00-login .button_login {
+  align-items: center;
+  background-color: #0058ff;
+  border-radius: 30px;
+  display: flex;
+  height: 63px;
+  margin-top: 78px;
+  min-width: 414px;
+  padding: 0 159px;
+  cursor: pointer;
+}
+
+.x00-login .label_login {
+  color: #f5f6fa;
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 600;
+  height: 45px;
+  letter-spacing: 0.60px;
+  line-height: 30px;
+  width: 96px;
+}
+
+.x00-login .label_forget_password {
+  align-self: flex-end;
+  color: var(--vulcan);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  letter-spacing: 0.30px;
+  line-height: 15px;
+  margin-top: 104px;
+  min-height: 23px;
+  min-width: 269px;
+  white-space: nowrap;
+}
+
+.x00-login .span0 {
+  color: var(--shadow-blue);
+  font-weight: 500;
+}
