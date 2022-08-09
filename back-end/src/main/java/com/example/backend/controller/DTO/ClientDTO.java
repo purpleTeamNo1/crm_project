@@ -17,7 +17,7 @@ public class ClientDTO {
     private int clientId=0;
 
     @ApiModelProperty(required = true)
-    private short status = 2;
+    private int status = 2;
 
     @ApiModelProperty
     private String firstname;

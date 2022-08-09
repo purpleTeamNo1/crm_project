@@ -20,8 +20,6 @@ public class InsuranceDTO {
     @ApiModelProperty(name = "insuranceId", required = true)
     private int insuranceId;
 
-    private Timestamp lastUpdate;
-
     private String policyNumber;
 
     private String applicationNumber;
@@ -43,7 +41,6 @@ public class InsuranceDTO {
     @ApiModelProperty(name = "additionalDeposit", dataType = "Decimal", example = "123.32")
     private double additionalDeposit;
 
-    @ApiModelProperty(name = "paymentTIme", dataType = "Short")
     private int paymentTime;
 
     private String riders;
