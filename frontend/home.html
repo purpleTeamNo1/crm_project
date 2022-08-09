@@ -67,40 +67,6 @@
                   <div class="title">General To Do List</div>
                   <!-- Add button -->
                   <div class="button-raised-filled" onclick="openForm()"> 
-                    <div class="form-popup" id="myForm">
-                      <!-- Add To Do List Form -->
-                      <form class="form-container">
-                        <h1>New To Do List Item</h1>
-                    
-                        <label for="title"><b>Title</b></label>
-                        <input type="text" placeholder="" name="Title" id="addTitle" required>
-                    
-                        <label for="description"><b>Description</b></label>
-                        <input type="text" placeholder="" name="Description" id="addDescription" required>
-
-                        <label for="location"><b>Location</b></label>
-                        <input type="text" placeholder="" name="Location" id="addLocation">
-
-                        <label for="clientid"><b>Client ID</b></label>
-                        <input type="text" placeholder="" name="ClientID" id="addClientID">
-
-                        <label for="priority"><b>Priority</b></label>
-                        <select id="addPriority" name="Priority">
-                          <option value=1>1</option>
-                          <option value=2>2</option>
-                          <option value=3>3</option>
-                          <option value=4>4</option>
-                        </select>
-
-                        <label for="duedate"><b>Due Date</b></label>
-                        <input type="date" name="DueDate" id="addDueDate" 
-                      value="2022-08-09" min="2022-08-09" max="2032-08-09">
-                    
-                        <button type="submit" class="btn" onclick="addToDoListItem()">Submit</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                      </form>
-                      <!-- Add To Do List Form Done -->
-                    </div>
                     <button class="mdc-button mdc-button--raised" data-id="anima-widget">
                       <span class="mdc-button__ripple"></span>
                       <i class="material-icons mdc-button__icon" aria-hidden="true">document_scanner</i>
@@ -150,6 +116,39 @@
           
           </div>
         </div>
+                            <!-- Add To Do List Form -->
+                            <div class="form-popup" id="myForm">
+                              <form class="form-container">
+                                <h1>New To Do List Item</h1>
+                            
+                                <label for="title"><b>Title</b></label>
+                                <input type="text" placeholder="" name="Title" id="addTitle" required>
+                            
+                                <label for="description"><b>Description</b></label>
+                                <input type="text" placeholder="" name="Description" id="addDescription" required>
+                            
+                                <label for="location"><b>Location</b></label>
+                                <input type="text" placeholder="" name="Location" id="addLocation">
+                            
+                                <label for="clientid"><b>Client ID</b></label>
+                                <input type="text" placeholder="" name="ClientID" id="addClientID">
+                            
+                                <label for="priority"><b>Priority</b></label>
+                                <select id="addPriority" name="Priority">
+                                  <option value=1>1</option>
+                                  <option value=2>2</option>
+                                  <option value=3>3</option>
+                                  <option value=4>4</option>
+                                </select>
+                            
+                                <label for="duedate"><b>Due Date</b></label>
+                                <input type="date" name="DueDate" id="addDueDate" value="2022-08-09" min="2022-08-09" max="2032-08-09">
+                            
+                                <button type="submit" class="btn" onclick="addToDoListItem()">Submit</button>
+                                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                              </form>
+                            </div>
+                            <!-- Add To Do List Form Done -->
       </div>
     </div>
   </body>

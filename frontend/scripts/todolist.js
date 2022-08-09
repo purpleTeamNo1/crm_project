@@ -1,8 +1,8 @@
 //THINGS THAT NEED TO BE FIXED
 // 1. Make it so that loadIntoTable() is run when the page is loaded
 // 2. Add functionality so that the dropdown lists in the Action column can get todoId for Editing/Mark Complete/Incomplete
-// 3. closeForm() doesn't close the form
-// 4. addToDoListItem() doesn't get a response,.
+// 3. closeForm() doesn't close the form -- FIXED
+// 4. addToDoListItem() doesn't get a response? Could be used for validation, look into
 
 // document.addEventListener('DOMContentLoaded', getSort(1));
 
@@ -14,6 +14,7 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  console.log("Okay.");
 }
 
 function addToDoListItem() {
