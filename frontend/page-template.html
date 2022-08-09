@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="This site was generated with Anima. www.animaapp.com" />
+    <link rel="shortcut icon" type=image/png href=https://animaproject.s3.amazonaws.com/home/favicon.png/>
+    <meta name="viewport" content="width=1920, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/page-template.css" />
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  </head>
+  <body style="margin: 0; background: #f4f7fc">
+    <input type="hidden" id="anPageName" name="page" value="page-template" />
+    <div class="container-center-horizontal">
+      <div class="page-template screen">
+        <div class="topbar">
+          <div class="overlap-group">
+            <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
+            <div class="button-raised-filled-left-disabled-theme">
+              <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                <span class="mdc-button__ripple"></span>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
+                <span class="mdc-button__label">Logout</span>
+              </button>
+              <script>
+                mdc.autoInit();
+                new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="sidebar">
+            <div class="home">
+              <img class="icon" src="img/ic-home-1@1x.png" />
+              <div class="label-home poppins-medium-mirage-14px">Home</div>
+            </div>
+            <div class="client-management">
+              <img class="icon" src="img/ic-calendar-1@1x.png" />
+              <div class="label-client-management poppins-medium-mirage-14px">Client Management</div>
+            </div>
+            <div class="sidebar-item">
+              <img class="ic_invoice" src="img/ic-invoice@1x.png" />
+              <div class="label-product-management poppins-medium-mirage-14px">Product Management</div>
+            </div>
+            <div class="sidebar-item">
+              <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
+              <div class="label-analytics poppins-medium-mirage-14px">Analytics</div>
+            </div>
+          </div>
+          <div class="flex-col">
+            <div class="page-header">DASHBOARD</div>
+            <div class="content-container border-1px-dove-gray">
+              <div class="flex-row-1">
+                <div class="flex-col-1">
+                  <div class="title">General To Do List</div>
+                  <div class="button-raised-filled">
+                    <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                      <span class="mdc-button__ripple"></span>
+                      <i class="material-icons mdc-button__icon" aria-hidden="true">document_scanner</i>
+                      <span class="mdc-button__label">New</span>
+                    </button>
+                    <script>
+                      mdc.autoInit();
+                      new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled .mdc-button"));
+                    </script>
+                  </div>
+                </div>
+                <div class="drop-down-filled-dis">
+                  <div class="mdc-select mdc-select--filled demo-width-class" data-id="anima-widget">
+                    <div
+                      class="mdc-select__anchor custom-enhanced-select-width"
+                      role="button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span class="mdc-select__ripple"></span>
+                      <span id="demo-label" class="mdc-floating-label">Sort By</span>
+                      <span class="mdc-select__selected-text-container">
+                        <span id="demo-selected-text" class="mdc-select__selected-text"></span>
+                      </span>
+                      <span class="mdc-select__dropdown-icon">
+                        <span class="mdc-select__dropdown-icon-inactive material-icons">arrow_drop_down</span>
+                        <span class="mdc-select__dropdown-icon-active material-icons">arrow_drop_up</span>
+                      </span>
+                      <span class="mdc-line-ripple"></span>
+                    </div>
+                    <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+                      <ul class="mdc-list" id="select_dropdown" role="listbox" aria-label="listbox">
+                        <li class="mdc-list-item mdc-list-item--selected" data-value="Newest" role="option">
+                          <span class="mdc-list-item__ripple"></span> <span class="mdc-list-item__text">Newest</span>
+                        </li>
+                        <li class="mdc-list-item" data-value="Oldest" role="option">
+                          <span class="mdc-list-item__ripple"></span> <span class="mdc-list-item__text">Oldest</span>
+                        </li>
+                        <li class="mdc-list-item" data-value="A-Z" role="option">
+                          <span class="mdc-list-item__ripple"></span> <span class="mdc-list-item__text">A-Z</span>
+                        </li>
+                        <li class="mdc-list-item" data-value="Z-A" role="option">
+                          <span class="mdc-list-item__ripple"></span> <span class="mdc-list-item__text">Z-A</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <script>
+                    new mdc.select.MDCSelect(document.querySelector(".drop-down-filled-dis .mdc-select"));
+                  </script>
+                </div>
+              </div>
+              <p class="lorem-ipsum-dolor-si">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit
+                amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At vero eos et accusam et justo duo
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
