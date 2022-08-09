@@ -2,7 +2,7 @@
 // 1. Make it so that loadIntoTable() is run when the page is loaded
 // 2. Add functionality so that the dropdown lists in the Action column can get todoId for Editing/Mark Complete/Incomplete
 // 3. closeForm() doesn't close the form
-// 4. addToDoListItem() doesn't get a response or complete the fetch(?). Not sure why not.
+// 4. addToDoListItem() doesn't get a response,.
 
 // document.addEventListener('DOMContentLoaded', getSort(1));
 
@@ -24,7 +24,7 @@ function addToDoListItem() {
   const priority = document.getElementById("addPriority").value;
   const dueDate = document.getElementById("addDueDate").value;
 
-  const data = [
+  const data = 
     {
       clientId: clientID,
       complete: false,
@@ -35,7 +35,7 @@ function addToDoListItem() {
       title: title,
       todoId: "0",
     }
-  ];
+  ;
 
      const xhr = new XMLHttpRequest();
      const url = "http://localhost:8080/todos/add";
@@ -44,14 +44,12 @@ function addToDoListItem() {
      xhr.onreadystatechange = function () {
        if (xhr.readyState === 4 && xhr.status === 200) {
         const json = JSON.parse(xhr.responseText);
-         console.log(json);
+         console.log(xhr.status);
        }
      };
 
      const body = JSON.stringify(data);
-     console.log(body);
-     console.log(data);
-     xhr.send(data);
+     xhr.send(body);
 
 //   const options = {
 //     method: "POST",
@@ -146,11 +144,14 @@ console.log(data);
       if (j == 7) {
         //special condition for Client column (7), which is a nested JSON and also needs to be concat for fullname
         data2 = data[i].client;
-        console.log(data.client);
         fullName = data2.firstname + " " + data2.lastName;
         tabCell.innerHTML = fullName;
       } else {
         tabCell.innerHTML = data[i][col[j]];
+      }
+
+      if (j == 8) {
+        tabCell.innerHTML = "N/A"
       }
     }
     //add extra column for Action (Need to find a way to give these elements unique IDs.)
