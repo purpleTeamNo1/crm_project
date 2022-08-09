@@ -1,5 +1,6 @@
 package com.example.backend.service.impl;
 
+import com.example.backend.common.Result;
 import com.example.backend.controller.DTO.TodoDTO;
 import com.example.backend.entity.Client;
 import com.example.backend.entity.Todos;
@@ -27,13 +28,13 @@ public class TodosServiceImpl implements TodosService {
     private ClientRepository clientRepository;
 
     //1. Create TodoList
-    public void addTodo(TodoDTO todoDTO) {
+    public Todos addTodo(TodoDTO todoDTO) {
         Todos todos = new Todos();
         BeanUtils.copyProperties(todoDTO, todos);
         Client client = clientRepository.findById(todoDTO.getClientId()).get();
         client.getTodosList().add(todos);
         todos.setClient(client);
-        todosRepository.save(todos);
+        return todosRepository.save(todos);
     }
 
     //2. query TodoList

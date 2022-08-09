@@ -8,7 +8,7 @@ create table role
     role_id     integer generated always as identity primary key,
     rolename    varchar(50)                         not null,--Admin (Superuser), User
     perms       varchar(260)                        not null,
-    last_update timestamp default CURRENT_TIMESTAMP not null,
+    last_update timestamp default CURRENT_TIMESTAMP,
     check ( length(rolename) >= 3 )
 );
 
@@ -81,7 +81,7 @@ create table client
     facebookID    VARCHAR(50),
     twitterID     VARCHAR(50),
     instagramID   VARCHAR(50),
-    last_update   timestamp default CURRENT_TIMESTAMP not null,
+    last_update   timestamp default CURRENT_TIMESTAMP,
     check ( length(email) >= 6 and email ilike '%@%.%'
         )
 
@@ -122,7 +122,7 @@ create table toDoList
     completion  boolean                             not null,
     location    varchar(100)                       ,
     note        varchar(50),
-    last_update timestamp default CURRENT_TIMESTAMP not null,
+    last_update timestamp default CURRENT_TIMESTAMP,
     client_id   integer references client
 
 
@@ -151,7 +151,7 @@ create table Insurance
     riders varchar(50) ,
     province             varchar(50),
     Note                 varchar(255),
-    last_update          timestamp default CURRENT_TIMESTAMP not null
+    last_update          timestamp default CURRENT_TIMESTAMP
 
 );
 insert into Insurance (ProductCode, policyNumber,applicationNumber,applicationDate,COI,enforcementDate, maturityDate ,coverageAmount,additionalDeposit  , PaymentTime ,  riders,province)
@@ -166,7 +166,7 @@ create table Product
     ProductID   integer generated always as identity primary key,
     ProductCode varchar(50)                         not null,
     InsuranceID integer references Insurance,
-    last_update timestamp default CURRENT_TIMESTAMP not null
+    last_update timestamp default CURRENT_TIMESTAMP
 );
 insert into Product (ProductCode,insuranceid)
 values ('parca',1),
@@ -188,7 +188,7 @@ create table ClientProduct
 --     startDate   date,
 --     endDate     date,
 -- --     coverage    decimal(13, 2),
-    last_update timestamp default CURRENT_TIMESTAMP not null
+    last_update timestamp default CURRENT_TIMESTAMP
 );
  insert into ClientProduct (sys_client_id, sys_product_id)
 values (1, 2),
