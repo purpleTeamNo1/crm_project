@@ -33,7 +33,7 @@ function productSearch(){
         .then( response => response.json() ).then( response => {
             products = response;
             console.log(response)
-            console.log(products)  
+            console.log(products)
             if(response != []) {
                 document.getElementById("searchResult").innerHTML = "";
                 element = response;
@@ -91,7 +91,7 @@ function productSearch(){
             .then( response => response.json() ).then( response => {
                 products = response;
                 console.log(response)
-                console.log(products)  
+                console.log(products)
                 if(response != []) {
                     document.getElementById("searchResult").innerHTML = "";
                     element = response;
@@ -120,7 +120,7 @@ function productSearch(){
                         linkUpdate.style.backgroundColor = "LightSteelBlue";
                         linkUpdate.id = element.productId;
                         linkUpdate.setAttribute('onclick', `productDetail(${element.productId})`);
-                        tdUpdate.appendChild(linkUpdate);                  
+                        tdUpdate.appendChild(linkUpdate);
                     ;
                 }
                 else{
@@ -137,70 +137,71 @@ function productDetail(productID) {
     //     if (client.clientId == clientID)
     //     console.log(client)
     // });
-    products.forEach(product => {
-        if (product.productId === productID) {
+    console.log(products);
+    //products.forEach(product => {
+        // if (product.productId === productID) {
             //console.log(`${client.clientId}`)
-            console.log(product)
-            console.log(product.insurance.insuranceId)
+            //console.log(products)
+            //console.log(product.insurance.insuranceId)
 
             // for (const key in client) {
             //     document.getElementById(`${key}`).value = `${client[key]}`;
             //  }
-            document.getElementById("productcode").value = product.productCode;
-            document.getElementById("productID").value = product.productId;
-            document.getElementById("insuranceId2").value = product.insurance.insuranceId;
-            document.getElementById("policyNum2").value = product.insurance.policyNumber;
-            document.getElementById("applicationNum").value = product.insurance.applicationNumber;
-            document.getElementById("applicationDate").value = product.insurance.applicationDate;
-            document.getElementById("enforcementDate").value = product.insurance.enforcementDate;
-            document.getElementById("coverageAmount").value = product.insurance.coverageAmount;
-            document.getElementById("additionalDeposit").value = product.insurance.additionalDeposit;
-            document.getElementById("paymentTime").value = product.insurance.paymentTime;
-            document.getElementById("riders").value = product.insurance.riders;
-            document.getElementById("province").value = product.insurance.province;
+            document.getElementById("productcode").value = products.productCode;
+            document.getElementById("productID").value = products.productId;
+            document.getElementById("insuranceId2").value = products.insurance.insuranceId;
+            document.getElementById("policyNum2").value = products.insurance.policyNumber;
+            document.getElementById("applicationNum").value = products.insurance.applicationNumber;
+            document.getElementById("applicationDate").value = products.applicationDate;
+            document.getElementById("enforcementDate").value = products.insurance.enforcementDate;
+            document.getElementById("coverageAmount").value = products.insurance.coverageAmount;
+            document.getElementById("additionalDeposit").value = products.insurance.additionalDeposit;
+            document.getElementById("paymentTime").value = products.insurance.paymentTime;
+            document.getElementById("riders").value = products.insurance.riders;
+            document.getElementById("province").value = products.insurance.province;
             // document.getElementById("productList").value = client.productList;
-
-
-
-
-
-            // let count = 0;
-            // let divRow = document.createElement("div");
-            // divRow.className = "row";
-            // document.getElementById("clientDetail").appendChild(divRow);  
-            // for (const key in client) {
-                // console.log(key)
-                // console.log(client[key])
-                // let tdHeader =  document.createElement("td")
-                // tdHeader.innerHTML = key
-                // let tdBody =  document.createElement("td")
-                // tdBody.innerHTML = client[key]
-                // document.getElementById("clientDetailTableHeader").appendChild(tdHeader);
-                // document.getElementById("clientDetailTableBody").appendChild(tdBody);
-                // if (count % 5 === 0) {
-                //     let divRow2 = document.createElement("div");
-                //     divRow.className = "row";
-                //     document.getElementById("clientDetail").appendChild(divRow);  
-                // }
-                // let divColumn = document.createElement("div");
-                // divColumn.className = "col"
-                // console.log(key)
-                // console.log(client[key])
-                // let labelKey =  document.createElement("label")
-                // labelKey.innerHTML = key
-                // let inputValue =  document.createElement("input")
-                // inputValue.value = client[key]
-                // inputValue.className = "form-control";
-                // divColumn.appendChild(labelKey);
-                // divColumn.appendChild(inputValue);
-                // divRow.appendChild(divColumn);
-                // count = count + 1;
-
+    //
+    //
+    //
+    //
+    //
+    //         // let count = 0;
+    //         // let divRow = document.createElement("div");
+    //         // divRow.className = "row";
+    //         // document.getElementById("clientDetail").appendChild(divRow);
+    //         // for (const key in client) {
+    //             // console.log(key)
+    //             // console.log(client[key])
+    //             // let tdHeader =  document.createElement("td")
+    //             // tdHeader.innerHTML = key
+    //             // let tdBody =  document.createElement("td")
+    //             // tdBody.innerHTML = client[key]
+    //             // document.getElementById("clientDetailTableHeader").appendChild(tdHeader);
+    //             // document.getElementById("clientDetailTableBody").appendChild(tdBody);
+    //             // if (count % 5 === 0) {
+    //             //     let divRow2 = document.createElement("div");
+    //             //     divRow.className = "row";
+    //             //     document.getElementById("clientDetail").appendChild(divRow);
+    //             // }
+    //             // let divColumn = document.createElement("div");
+    //             // divColumn.className = "col"
+    //             // console.log(key)
+    //             // console.log(client[key])
+    //             // let labelKey =  document.createElement("label")
+    //             // labelKey.innerHTML = key
+    //             // let inputValue =  document.createElement("input")
+    //             // inputValue.value = client[key]
+    //             // inputValue.className = "form-control";
+    //             // divColumn.appendChild(labelKey);
+    //             // divColumn.appendChild(inputValue);
+    //             // divRow.appendChild(divColumn);
+    //             // count = count + 1;
+    //
+    //         //}
             //}
-            }
-        }
-    );
-    
+        //}
+    //);
+
 
     
     
