@@ -28,4 +28,9 @@ public class DateAndTimeUtils {
             throw new IllegalArgumentException(e);
         }
     }
+
+    public static Timestamp getCurrentTime(){
+        long time = System.currentTimeMillis();
+        return new Timestamp(time);
+    }
 }

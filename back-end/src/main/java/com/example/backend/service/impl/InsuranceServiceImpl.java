@@ -7,6 +7,7 @@ import com.example.backend.entity.Product;
 import com.example.backend.repository.InsuranceRepository;
 import com.example.backend.repository.ProductRepository;
 import com.example.backend.service.InsuranceService;
+import com.example.backend.utils.DateAndTimeUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -30,7 +31,9 @@ public class InsuranceServiceImpl implements InsuranceService {
         Product product = new Product();
 
         BeanUtils.copyProperties(insuranceDTO, insurance);
+        insurance.setLastUpdate(DateAndTimeUtils.getCurrentTime());
         BeanUtils.copyProperties(insuranceDTO,product);
+        product.setLastUpdate(DateAndTimeUtils.getCurrentTime());
 
         try{
             productRepository.save(product);

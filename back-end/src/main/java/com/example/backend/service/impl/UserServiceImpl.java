@@ -10,6 +10,7 @@ import com.example.backend.exception.ServiceException;
 import com.example.backend.repository.RoleRepository;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.UserService;
+import com.example.backend.utils.DateAndTimeUtils;
 import com.example.backend.utils.Md5Utils;
 import com.example.backend.utils.TokenUtils;
 import org.springframework.beans.BeanUtils;
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
         String passwordMd5 = Md5Utils.md5Generator(registryDTO.getPassword());
         registryDTO.setPassword(passwordMd5);
         BeanUtils.copyProperties(registryDTO, user);
+        user.setLastUpdate(DateAndTimeUtils.getCurrentTime());
 
         Role role = roleRepository.findRoleByRoleId(registryDTO.getRoleId());
         if(role == null){

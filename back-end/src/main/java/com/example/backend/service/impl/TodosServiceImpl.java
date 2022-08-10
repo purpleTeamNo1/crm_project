@@ -9,6 +9,7 @@ import com.example.backend.repository.ClientRepository;
 import com.example.backend.repository.TodosRepository;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.TodosService;
+import com.example.backend.utils.DateAndTimeUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -31,6 +32,7 @@ public class TodosServiceImpl implements TodosService {
     public Todos addTodo(TodoDTO todoDTO) {
         Todos todos = new Todos();
         BeanUtils.copyProperties(todoDTO, todos);
+        todos.setLastUpdate(DateAndTimeUtils.getCurrentTime());
         Client client = clientRepository.findById(todoDTO.getClientId()).get();
         client.getTodosList().add(todos);
         todos.setClient(client);

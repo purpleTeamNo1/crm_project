@@ -52,8 +52,7 @@ public class UserTest {
 
     @Test
     public void timeStampGenerator(){
-        long currentTime = new Date().getTime();
-        Timestamp timestamp = new Timestamp(currentTime);
-        System.out.println(timestamp);
+        long time = System.currentTimeMillis();
+        System.out.println(new Timestamp(time));
     }
 }

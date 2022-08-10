@@ -4,6 +4,7 @@ import com.example.backend.controller.DTO.ClientDTO;
 import com.example.backend.entity.Client;
 import com.example.backend.repository.ClientRepository;
 import com.example.backend.service.ClientService;
+import com.example.backend.utils.DateAndTimeUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -23,6 +24,7 @@ public class ClientServiceImpl implements ClientService {
     public void addClient(ClientDTO clientDTO) {
         Client client = new Client();
         BeanUtils.copyProperties(clientDTO, client);
+        client.setLastUpdate(DateAndTimeUtils.getCurrentTime());
         clientRepository.save(client);
     }
 
