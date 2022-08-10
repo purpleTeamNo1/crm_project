@@ -64,17 +64,22 @@ input:focus {
 
 /* pop up form stuff */
 
-/* The popup form - hidden by default */
-.form-popup-add {
-  display: none;
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
   position: fixed;
-  bottom: 0;
-  left: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
 }
 
-.form-popup-edit {
+/* The popup form - hidden by default */
+.form-popup {
   display: none;
   position: fixed;
   bottom: 0;
@@ -108,7 +113,7 @@ input:focus {
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #0058FF;
+  background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -121,7 +126,7 @@ input:focus {
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: #F0142F;
+  background-color: red;
 }
 
 /* Add some hover effects to buttons */

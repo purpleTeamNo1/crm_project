@@ -2,75 +2,280 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/00-login.css" />
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="css/page-template.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"/>
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script type="text/javascript" src="./scripts/login.js"></script>
-    <title>Client Management</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/00-login.css" />
+  <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+  <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  <link rel="stylesheet" type="text/css" href="css/page-template.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" />
+  <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+  <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script type="text/javascript"
+    src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script type="text/javascript" src="./scripts/login.js"></script>
+  <script type="text/javascript" src="./scripts/client.js"></script>
+  <title>Client Management</title>
 </head>
+
 <body>
-<input type="hidden" id="anPageName" name="page" value="page-template" />
-<div class="container-center-horizontal">
+  <input type="hidden" id="anPageName" name="page" value="page-template" />
+  <div class="container-center-horizontal">
     <div class="page-template screen">
-        <div class="topbar">
-            <div class="overlap-group">
-                <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
-                <div class="button-raised-filled-left-disabled-theme">
-                    <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
-                        <span class="mdc-button__ripple"></span>
-                        <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
-                        <span class="mdc-button__label">Logout</span>
-                    </button>
-                    <script>
-                        mdc.autoInit();
-                        new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
-                    </script>
-                </div>
-            </div>
+      <div class="topbar">
+        <div class="overlap-group">
+          <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
+          <div class="button-raised-filled-left-disabled-theme">
+            <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
+              <span class="mdc-button__ripple"></span>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
+              <span class="mdc-button__label">Logout</span>
+            </button>
+            <script>
+              mdc.autoInit();
+              new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
+            </script>
+          </div>
         </div>
-        <div class="flex-row">
-            <div class="sidebar">
-                <div class="home">
-                    <img class="icon" src="img/ic-home-1@1x.png" />
-                    <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
-                </div>
-                <div class="client-management">
-                    <img class="icon" src="img/ic-calendar-1@1x.png" />
-                    <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
-                        Management</a></div>
-                </div>
-                <div class="sidebar-item">
-                    <img class="ic_invoice" src="img/ic-invoice@1x.png" />
-                    <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
-                        Management</a></div>
-                </div>
-                <div class="sidebar-item">
-                    <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
-                    <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
-                </div>
-            </div>
-            <div class="flex-col">
-                <div class="page-header">Client Management</div>
-                <div class="content-container border-1px-dove-gray">
-                    <div class="flex-row-1">
-                        <div class="flex-col-1">
-                            <div class="title">Search</div>
-                        </div>
-                </div>
-            </div>
+      </div>
+      <div class="flex-row">
+        <div class="sidebar">
+          <div class="home">
+            <img class="icon" src="img/ic-home-1@1x.png" />
+            <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
+          </div>
+          <div class="client-management">
+            <img class="icon" src="img/ic-calendar-1@1x.png" />
+            <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
+                Management</a></div>
+          </div>
+          <div class="sidebar-item">
+            <img class="ic_invoice" src="img/ic-invoice@1x.png" />
+            <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
+                Management</a></div>
+          </div>
+          <div class="sidebar-item">
+            <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
+            <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
+          </div>
         </div>
+        <div class="flex-col" style="width: 80% ;">
+          <div class="page-header">Client Management</div>
+          <div class="content-container border-1px-dove-gray" style="height: 15rem; width: 1000px;">
+            <div class="title">Search</div>
+            <form>
+              <div class="container" style="width:100%">
+                <div class="row">
+                  <div class="col">
+                    <label for="firstName"><b>First Name</b></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                  </div>
+                  <div class="col">
+                    <label for="lastName"><b>Last Name</b></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                  </div>
+                  <div class="col">
+                    <label for="homePhone"><b>Home Phone</b></label>
+                    <input type="text" class="form-control" id="homePhone" name="homePhone" placeholder="Home Phone">
+                  </div>
+                  <div class="col">
+                    <label for="cellPhone"><b>Cell Phone</b></label>
+                    <input type="text" class="form-control" id="cellPhone" name="cellPhone" placeholder="Cell Phone">
+                  </div>
+                  <div class="col">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                </div>
+              </div>
+              <div class="form-container container" style="width: 300px; margin: 0%;">
+                <div class="row">
+                  <div class="col">
+                    <div class="btn" onclick="clientSearch()"><b>Search</b> </div>
+                  </div>
+                  <div class="col">
+                    <div class="btn" onclick="clearSearch()"><b>Clear</b> </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="content-container border-1px-dove-gray" style="height: 50rem; width: 1000px;">
+            <div class="title">Result</div>
+            <table class="table table-striped">
+              <thead>
+                <tr style="background-color:rgb(236, 215, 186)">
+                  <th scope="col"><b>Name</b></th>
+                  <th scope="col"><b>Client ID</b> </th>
+                  <th scope="col"><b>Plan ID</b> </th>
+                  <th scope="col"><b>Cell Phone</b> </th>
+                  <th scope="col"><b>Address</b> </th>
+                  <th scope="col"><b>Details</b> </th>
+                </tr>
+              </thead>
+              <tbody id="searchResult">
+              </tbody>
+            </table>
+          </div>
+          <div class="content-container border-1px-dove-gray" style="height: 50rem; width: 1000px;">
+            <div class="title">Client Details</div>
+            <form>
+              <div class="container" style="width:100%" id="clientDetail">
+                <div class="row">
+                  <div class="col">
+                    <label for="firstname"><b>First Name</b></label>
+                    <input type="text" class="form-control" id="firstname" name="firstNname" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="lastName"><b>Last Name</b></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="clientId"> <b>Client ID</b></label>
+                    <input type="text" class="form-control" id="clientId" name="clientId" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="planId"><b>Plan ID</b></label>
+                    <input type="text" class="form-control" id="planId" name="planId" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="segfundNum"><b>Seg. fund Number</b></label>
+                    <input type="text" class="form-control" id="segfundNum" name="segfundNum" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="sin"><b>SIN</b></label>
+                    <input type="text" class="form-control" id="sin" name="sin" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="citizenship"><b>Citizenship</b></label>
+                    <input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="cellPhone"><b>Cell Phone</b></label>
+                    <input type="text" class="form-control" id="cellPhone" name="cellPhone" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="address"><b>Address</b></label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="postalCode"><b>Postal Code</b></label>
+                    <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="homePhone"><b>Home Phone</b></label>
+                    <input type="text" class="form-control" id="homePhone" name="homePhone" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="age"><b>Age</b></label>
+                    <input type="text" class="form-control" id="age" name="age" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="gender"><b>Gender</b></label>
+                    <input type="text" class="form-control" id="gender" name="gender" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="dateOfBirth"><b>Date of Birth</b></label>
+                    <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="maritalStatus"><b>Marital Status</b></label>
+                    <input type="text" class="form-control" id="maritalStatus" name="maritalStatus" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="referredBy"><b>Refered By</b></label>
+                    <input type="text" class="form-control" id="referredBy" name="referredBy" placeholder=" ">
+                  </div>
+                  <div class="col">
+                    <label for="giftGiven"><b>Gift Given</b></label>
+                    <input type="text" class="form-control" id="giftGiven" name="giftGiven" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="source"><b>Source</b></label>
+                    <input type="text" class="form-control" id="source" name="source" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="status"><b>Status</b></label>
+                    <input type="text" class="form-control" id="status" name="status" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="linkedinId"><b>Linkedin</b></label>
+                    <input type="text" class="form-control" id="linkedinId" name="linkedinId" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="instagramId"><b>Instagram</b></label>
+                    <input type="text" class="form-control" id="instagramId" name="instagramId" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="facebookId"><b>Facebook</b></label>
+                    <input type="text" class="form-control" id="facebookId" name="facebookId" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="twitterId"><b>Twitter</b></label>
+                    <input type="text" class="form-control" id="twitterId" name="twitterId" placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="wechatId"><b>WeChat</b></label>
+                    <input type="text" class="form-control" id="wechatId" name="wechatId" placeholder="">
+                  </div>
+                  <div class="col">
+                    <label for="lastUpdate"><b>Last Update</b></label>
+                    <input type="text" class="form-control" id="lastUpdate" name="lastUpdate" placeholder="">
+                  </div>
+                  <div class="col">
+                  </div>
+                  <div class="col">
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- <div class="col">
+                    <label for="productList"><b>Product Lists</b></label>
+                    <input type="text" class="form-control" id="productList" name="productList" placeholder="Product Lists">
+                </div> -->
+              </div>
+            </form>
+          </div>
+
+          <!-- <table class="table table-striped" id="clientDetailTable">
+              <thead>
+                <tr style="background-color:rgb(236, 215, 186)" id="clientDetailTableHeader">
+                </tr>
+              </thead>
+              <tbody >
+                <tr id="clientDetailTableBody">
+
+                </tr>
+              </tbody>
+            </table> -->
+
+        </div>
+      </div>
     </div>
-</div>
-</div>
+  </div>
+  </div>
 </body>
+
 </html>
+<div class="title">Result</div>
