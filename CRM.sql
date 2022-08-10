@@ -141,7 +141,7 @@ create table Insurance
     policyNumber         varchar(50) unique,
     applicationNumber    varchar(50) unique,
     applicationDate       date,
-    COI                  varchar(50),
+    COI                  decimal(13,2),
     enforcementDate      DATE,
     maturityDate        DATE,
     coverageAmount      decimal(13, 2),
