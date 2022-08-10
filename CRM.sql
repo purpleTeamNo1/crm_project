@@ -153,7 +153,7 @@ create table Insurance
     last_update          timestamp default CURRENT_TIMESTAMP
 
 );
-insert into Insurance (ProductCode, policyNumber,applicationNumber,applicationDate,COI,enforcementDate, maturityDate ,coverageAmount,additionalDeposit  , PaymentTime ,  riders,province)
+insert into Insurance (policyNumber,applicationNumber,applicationDate,COI,enforcementDate, maturityDate ,coverageAmount,additionalDeposit  , PaymentTime ,  riders,province)
 values ('mica','A8785','E985353','2022-08-06', 5000.23,'2022-09-01','2032-09-01',500000.00, 280.90,10,'CPR','QC'),
        ('gica','B8785','E8545353','2022-09-06', 6000.23,'2022-10-01','2032-10-01',600000.00, 300.90,10,'GIO','ON'),
        ('termca','A7785','E985853','2022-08-06', 7000.23,'2022-11-01','2032-11-01',700000.00, 280.90,10,'CPR','QC'),
