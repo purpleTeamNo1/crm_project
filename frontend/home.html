@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/00-login.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="css/page-template.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"/>
@@ -65,25 +65,21 @@
               <div class="flex-row-1">
                 <div class="flex-col-1">
                   <div class="title">General To Do List</div>
-                  <!-- Add button -->
-                  <div class="button-raised-filled" onclick="openForm()"> 
-                    <button class="mdc-button mdc-button--raised" data-id="anima-widget">
-                      <span class="mdc-button__ripple"></span>
-                      <i class="material-icons mdc-button__icon" aria-hidden="true">document_scanner</i>
-                      <span class="mdc-button__label">New</span>
-                    </button>
-                    <script>
-                      mdc.autoInit();
-                      new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled .mdc-button"));
-                    </script>
-                  </div>
+                  <div class="buttons">
+                    <!-- Buttons Start -->
+
+                    <input type="image" src="img/newbutton.png" onclick="openAddForm()" />
+                    <input type="image" src="img/editbutton.png" onclick="openEditForm()"/>
+                    </div>
+                    <!-- Buttons Done -->
+                
                 </div>
                 <div class="drop-down-filled-dis">
                   <select id="comboSort" onchange="getSort(value)">
                     <option value=1>ID</option>
                     <option value=2>Priority</option>
                     <option value=3>Name (Last)</option>
-                    <option value=4>Last Update</option>
+                    <option value=4>Due Date</option>
                   </select>
                 </div>
               </div>
@@ -91,17 +87,16 @@
                 <table class="table" table id ="table">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Priority</th>
-                      <th>Last Update</th>
-                      <th>Due Date</th>
-                      <th>Location</th>
-                      <th>Client</th>
-                      <th>Note</th>
-                      <th>Completion</th>
-                      <th>Action</th>
+                      <th id="th1">ID</th>
+                      <th id="th2">Title</th>
+                      <th id="th3">Description</th>
+                      <th id="th4">Priority</th>
+                      <th id="th5">Last Update</th>
+                      <th id="th6">Due Date</th>
+                      <th id="th7">Location</th>
+                      <th id="th8">Client</th>
+                      <th id="th9">Completion</th>
+                      <th id="th10">ClientID</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -116,39 +111,85 @@
           
           </div>
         </div>
-                            <!-- Add To Do List Form -->
-                            <div class="form-popup" id="myForm">
-                              <form class="form-container">
-                                <h1>New To Do List Item</h1>
-                            
-                                <label for="title"><b>Title</b></label>
-                                <input type="text" placeholder="" name="Title" id="addTitle" required>
-                            
-                                <label for="description"><b>Description</b></label>
-                                <input type="text" placeholder="" name="Description" id="addDescription" required>
-                            
-                                <label for="location"><b>Location</b></label>
-                                <input type="text" placeholder="" name="Location" id="addLocation">
-                            
-                                <label for="clientid"><b>Client ID</b></label>
-                                <input type="text" placeholder="" name="ClientID" id="addClientID">
-                            
-                                <label for="priority"><b>Priority</b></label>
-                                <select id="addPriority" name="Priority">
-                                  <option value=1>1</option>
-                                  <option value=2>2</option>
-                                  <option value=3>3</option>
-                                  <option value=4>4</option>
-                                </select>
-                            
-                                <label for="duedate"><b>Due Date</b></label>
-                                <input type="date" name="DueDate" id="addDueDate" value="2022-08-09" min="2022-08-09" max="2032-08-09">
-                            
-                                <button type="submit" class="btn" onclick="addToDoListItem()">Submit</button>
-                                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                              </form>
-                            </div>
-                            <!-- Add To Do List Form Done -->
+        <!-- Add To Do List Form Start -->
+        <div class="form-popup-add" id="myAddForm">
+          <form class="form-container">
+            <h1>NEW To Do List Item</h1>
+        
+            <label for="title"><b>Title</b></label>
+            <input type="text" placeholder="" name="Title" id="addTitle" required>
+        
+            <label for="description"><b>Description</b></label>
+            <input type="text" placeholder="" name="Description" id="addDescription" required>
+
+            <label for="location"><b>Location</b></label>
+            <input type="text" placeholder="" name="Location" id="addLocation">
+
+            <label for="clientid"><b>Client ID</b></label>
+            <input type="text" placeholder="" name="ClientID" id="addClientID">
+
+            <label for="priority"><b>Priority</b></label>
+            <select id="addPriority" name="Priority">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+            </select>
+
+            <label for="duedate"><b>Due Date</b></label>
+            <input type="date" name="DueDate" id="addDueDate" 
+          value="2022-08-09" min="2022-08-09" max="2032-08-09">
+        
+            <button type="submit" class="btn" onclick="addToDoListItem()">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
+          </form>
+        </div>
+        <!-- Add To Do List Form Done -->
+        <!-- Edit To Do List Form Start -->
+        <div class="form-popup-edit" id="myEditForm">
+          <form class="form-container">
+            <h1>EDIT To Do List Item</h1>
+
+            <label for="clientid"><b>1. Load the table<br>
+              2. Search by To Do ID</b></label>
+            <input type="textarea" placeholder="" name="todoID" id="searchTodoID">
+            <button type="button" onclick="searchResults()">Search</button><br><br>
+        
+            <label for="title"><b>Title</b></label>
+            <input type="text" placeholder="" name="Title" id="editTitle" required disabled>
+        
+            <label for="description"><b>Description</b></label>
+            <input type="text" placeholder="" name="Description" id="editDescription" required disabled>
+
+            <label for="location"><b>Location</b></label>
+            <input type="text" placeholder="" name="Location" id="editLocation" required disabled>
+
+            <label for="clientid"><b>Client ID</b></label>
+            <input type="text" placeholder="" name="ClientID" id="editClientID" required disabled>
+
+            <label for="priority"><b>Priority</b></label>
+            <select name="Priority" id="editPriority" disabled>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+            </select>
+
+            <label for="duedate"><b>Due Date</b></label>
+            <input type="date" name="DueDate" id="editDueDate" 
+          value="2022-08-09" min="2022-08-09" max="2032-08-09" disabled><br><br>
+
+          <label><b>Completed?</b></label><br>
+          <input type="radio" id="completeTrue" name="completeCheck" value=true required disabled>
+          <label for="completeTrue">Yes</label><br>
+          <input type="radio" id="completeFalse" name="completeCheck" value=false required disabled>
+          <label for="completeFalse">No</label><br>
+        
+            <button type="submit" class="btn" onclick="editToDoListItem()">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
+          </form>
+        </div>
+        <!-- Edit To Do List Form Done -->
       </div>
     </div>
   </body>

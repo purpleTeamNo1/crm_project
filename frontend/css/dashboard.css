@@ -272,5 +272,9 @@ table tr th:nth-child(10), table tr td:nth-child(10){
   /* hides the 10th column and cells containing clientID */
   display:none;
  }
+ table tr th:nth-child(5), table tr td:nth-child(5){ 
+  /* hides the 10th column and cells containing lastUpdate */
+  display:none;
+ }
 
- 
+
