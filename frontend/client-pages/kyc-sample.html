@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
   <link rel="shortcut icon" type=image/png href=https://animaproject.s3.amazonaws.com/home/favicon.png />
-  <meta name="viewport" content="width=1920, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
   <link rel="stylesheet" type="text/css" href="../client-pages/css/kyc.css" />
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
@@ -17,7 +16,8 @@
   <link rel="stylesheet" type="text/css" href="../client-pages/css/styleguide.css" />
   <link rel="stylesheet" type="text/css" href="../client-pages/css/globals.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script type="text/javascript" src="../scripts/login.js"></script>
     <script type="text/javascript" src="../scripts/kyc.js"></script>
 </head>
 
@@ -30,7 +30,7 @@
           <img class="logo-dark-blue-eng-chn-jw"
             src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2c3fee2bc8ffa80bddb3/img/logo-dark-blue-eng-chn-jw-1@1x.png" />
           <div class="button-raised-filled-left-disabled-theme">
-            <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+            <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
               <span class="mdc-button__label">Logout</span>
@@ -47,22 +47,22 @@
           <div class="home">
             <img class="icon-home"
               src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-home-1@1x.png" />
-            <div class="label-home poppins-medium-mirage-14px">Home</div>
+            <div class="label-home poppins-medium-mirage-14px"><a href="../home.html">Home</a></div>
           </div>
           <div class="client-management">
             <img class="icon-calendar"
               src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-calendar-1@1x.png" />
-            <div class="label-client-management poppins-medium-mirage-14px">Client Management</div>
+            <div class="label-client-management poppins-medium-mirage-14px"><a href="../client.html">Client Management</a></div>
           </div>
           <div class="t-management">
             <img class="ic_invoice"
               src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-invoice@1x.png" />
-            <div class="label-product-management poppins-medium-mirage-14px">Product Management</div>
+            <div class="label-product-management poppins-medium-mirage-14px"><a href="../product.html">Product Management</a></div>
           </div>
           <div class="analytics">
             <img class="ic_dashboard"
               src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2c3fee2bc8ffa80bddb3/img/ic-dashboard-10@1x.png" />
-            <div class="label-analytics poppins-medium-mirage-14px">Analytics</div>
+            <div class="label-analytics poppins-medium-mirage-14px"><a href="../home.html">Analytics</a></div>
           </div>
         </div>
         <div class="flex-col">
@@ -73,60 +73,66 @@
             <div class="lorem-ipsum-dolor-si poppins-bold-mirage-12px">
               <form class="form-container2">
                 <label for="lastName"><b>Last Name</b></label>
-                <input type="text" placeholder="" name="Last Name" id="lastName" required disabled>
+                <input type="text" style="width:150px" placeholder="" name="Last Name" id="lastName" required disabled>
                 <label for="firstName"><b>First Name</b></label>
-                <input type="text" placeholder="" name="First Name" id="firstName" required disabled>
+                <input type="text" style="width:150px" placeholder="" name="First Name" id="firstName" required disabled>
                 <label for="SIN"><b>SIN</b></label>
-                <input type="text" placeholder="" name="Last Name" id="SIN" required disabled>
+                <input type="text" style="width:110px" placeholder="" name="Last Name" id="SIN" required disabled>
                 <label for="DOB"><b>DOB</b></label>
-                <input type="date" name="DOB" id="DOB" value="2022-08-09" min="1900-01-01" max="2032-08-09" required
+                <input type="date" style="width:110px" name="DOB" id="DOB" value="2022-08-09" min="1900-01-01" max="2032-08-09" required
                   disabled>
-                <br>
+                  <label for="age"><b>Age</b></label>
+                <input type="text" style="width:40px" placeholder="" name="Age" id="age" required disabled>
                 <label for="gender"><b>Gender</b></label>
-                <input type="text" placeholder="" name="Gender" id="gender" required disabled>
+                <input type="text" style="width:110px" placeholder="" name="Gender" id="gender" required disabled>
                 <label for="address"><b>Address</b></label>
                 <input type="text" placeholder="" name="Address" id="address" required disabled>
+                <br>
                 <label for="postalCode"><b>Postal Code</b></label>
-                <input type="text" placeholder="" name="Postal Code" id="postalCode" required disabled>
-                <br>
+                <input type="text" style="width:60px" placeholder="" name="Postal Code" id="postalCode" required disabled>
                 <label for="homePhone"><b>Home Phone</b></label>
-                <input type="tel" placeholder="" name="Home Phone" id="homePhone" required disabled>
+                <input type="tel" style="width:110px" placeholder="" name="Home Phone" id="homePhone" required disabled>
                 <label for="cellPhone"><b>Cell Phone</b></label>
-                <input type="tel" placeholder="" name="Cell Phone" id="cellPhone" required disabled>
+                <input type="tel" style="width:110px" placeholder="" name="Cell Phone" id="cellPhone" required disabled>
                 <label for="email"><b>Email</b></label>
-                <input type="email" placeholder="" name="Email" id="email" required disabled>
+                <input type="email" style="width:180px" placeholder="" name="Email" id="email" required disabled>
                 <label for="martialStatus"><b>Marital Status</b></label>
-                <input type="text" placeholder="" name="Marital Status" id="maritalStatus" disabled>
-                <br>
+                <input type="text" style="width:80px" placeholder="" name="Marital Status" id="maritalStatus" disabled>
                 <label for="citizenship"><b>Citizenship</b></label>
                 <input type="text" placeholder="" name="Citizenship" id="citizenship" required disabled>
                 <hr>
+                <label for="status"><b>Status</b></label>
+                <input type="text" style="width:50px" placeholder="" name="Status" id="status" disabled>
                 <label for="otherClientID"><b>Client ID</b></label>
-                <input type="text" placeholder="" name="Other Client ID" id="otherClientID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="Other Client ID" id="otherClientID" disabled>
                 <label for="planID"><b>Plan ID</b></label>
-                <input type="text" placeholder="" name="Plan ID" id="planID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="Plan ID" id="planID" disabled>
                 <label for="segFundsNum"><b>SEG Funds #</b></label>
-                <input type="text" placeholder="" name="SEG Funds #" id="segFundsNum" disabled>
+                <input type="text" style="width:110px" placeholder="" name="SEG Funds #" id="segFundsNum" disabled>
                 <hr>
                 <label for="weChatID"><b>WeChat ID</b></label>
-                <input type="text" placeholder="" name="WeChat ID" id="weChatID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="WeChat ID" id="weChatID" disabled>
+                <label for="instagramID"><b>Instagram ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Instagram ID" id="instagramID" disabled>
                 <label for="linkedInID"><b>LinkedIn ID</b></label>
-                <input type="text" placeholder="" name="LinkedIn ID" id="linkedInID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="LinkedIn ID" id="linkedInID" disabled>
                 <label for="facebookID"><b>Facebook ID</b></label>
-                <input type="text" placeholder="" name="Facebook ID" id="facebookID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="Facebook ID" id="facebookID" disabled>
+                <br>
                 <label for="twitterID"><b>Twitter ID</b></label>
-                <input type="text" placeholder="" name="Twitter ID" id="twitterID" disabled>
+                <input type="text" style="width:110px" placeholder="" name="Twitter ID" id="twitterID" disabled>
                 <label for="source"><b>Source</b></label>
-                <select name="source" id="source" disabled>
+                <select name="source" style="width:150px" id="source" disabled>
                   <option value="By Client">By Client</option>
                   <option value="By Friend">By Friend</option>
                   <option value="By Social Media">By Social Media</option>
                   <option value="By Advertisement">By Advertisement</option>
-                  <option value="By Other">By Other</option>
+                  <option value="By Other">By Other</option></select>
                   <label for="referredBy"><b>Referred By</b></label>
                   <input type="text" placeholder="" name="Referred By" id="referredBy" required disabled>
+                  <br>
                   <label for="sentGift"><b>Send Gift/Check?</b></label>
-                  <input type="checkbox" placeholder="" name="Send Gift/Check" id="sentGift" required disabled>
+                  <input type="checkbox" style="width:30px" placeholder="" name="Send Gift/Check" id="sentGift" required disabled>
               </form>
             </div>
             <div class="button-raised-fil-container">

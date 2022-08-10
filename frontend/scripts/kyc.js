@@ -7,26 +7,77 @@ document.addEventListener(
 //vvvvvvvvvvvvvvv Filling Forms & Tables vvvvvvvvvvvvvv
 
 async function loadClientInfo() {
-  fetch("http://localhost:8080/client/findByDync", {
-    body: JSON.stringify({firstName: "Alice"}),
+  //   fetch("http://localhost:8080/client/findByDync", {
+  //     body: JSON.stringify({firstName: "Alice"}),
+  //     headers: {
+  //       Accept: "*/*",
+  //       "Content-Type": "application/json",
+  //     },
+  //     method: "POST",
+  //   })
+  //   .then( response => response.json() )
+  //   .then( response => {
+  let firstName = "Alice";
+  let lastName = "";
+  let email = "";
+  let cellPhone = "";
+  let homePhone = "";
+  const params = {
+    firstName,
+    lastName,
+    cellPhone,
+    homePhone,
+    email,
+  };
+  //console.log(params);
+  const options = {
+    method: "POST",
     headers: {
-      Accept: "*/*",
+      // 'Accept': 'application/json, text/plain, */*',
       "Content-Type": "application/json",
     },
-    method: "POST",
-  })
-  .then( response => response.json() )
-  .then( response => {
-    if(response.code == "200") {
+    body: JSON.stringify(params),
+  };
+  fetch("http://localhost:8080/client/findByDync", options)
+    .then((response) => response.json())
+    .then((response) => {
+      clients = response;
+      if (response.code == "200") {
         //response.code isn't logged? Investigate.
-    }
-    else{
-        data = response;
-        console.log(data);
-    }
-} );
+      } else {
+        clients.forEach((client) => {
+          if (client.clientId != "") {
+            document.getElementById("address").value = client.address;
+            document.getElementById("age").value = client.age;
+            document.getElementById("cellPhone").value = client.cellPhone;
+            document.getElementById("citizenship").value = client.citizenship;
+            document.getElementById("otherClientID").value = client.clientId;
+            document.getElementById("DOB").value = client.dateOfBirth;
+            document.getElementById("email").value = client.email;
+            document.getElementById("facebookID").value = client.facebookId;
+            document.getElementById("firstName").value = client.firstname;
+            document.getElementById("gender").value = client.gender;
+            document.getElementById("homePhone").value = client.homePhone;
+            document.getElementById("instagramID").value = client.instagramId;
+            document.getElementById("linkedInID").value = client.linkedinId;
+            document.getElementById("maritalStatus").value =
+              client.maritalStatus;
+            document.getElementById("planID").value = client.planId;
+            document.getElementById("postalCode").value = client.postalCode;
+            document.getElementById("referredBy").value = client.referredBy;
+            document.getElementById("segFundsNum").value = client.segfundNum;
+            document.getElementById("SIN").value = client.sin;
+            document.getElementById("source").value = client.source;
+            document.getElementById("status").value = client.status;
+            document.getElementById("twitterID").value = client.twitterId;
+            document.getElementById("weChatID").value = client.wechatId;
+            document.getElementById("lastName").value = client.lastName;
+            document.getElementById("sentGift").value = client.giftGiven;
+          }
+        });
+      }
+    });
 }
-
 
 async function loadIntoTableTDL() {
   let url = "http://localhost:8080/todos/findById?page=0&size=50&clientId=1";

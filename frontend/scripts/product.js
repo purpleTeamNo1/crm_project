@@ -5,9 +5,13 @@ function clearSearch() {
     document.getElementById("policyNum").value = "";
 }
 
-function productSearch(field){
+function productSearch(){
 
-    if (field == 0) {
+    let field = document.getElementById("insuranceId").value;
+    console.log(field);
+    let field2 = document.getElementById("policyNumber").value;
+
+    if (field!= '') {
     // let insuranceID = document.getElementById("insuranceID").value;
     // const params = {
     //     firstName ,
@@ -25,14 +29,14 @@ function productSearch(field){
     //     },
     //     body: JSON.stringify( params )
     // };
-    fetch( 'http://localhost:8080/insurance/findall?orderBy=insuranceId&page=0&size=50')
+    fetch( 'http://localhost:8080/insurance/findbyid?insuranceId=' + field)
         .then( response => response.json() ).then( response => {
             products = response;
             console.log(response)
             console.log(products)  
             if(response != []) {
                 document.getElementById("searchResult").innerHTML = "";
-                response.forEach(element => {
+                element = response;
                     let trData = document.createElement("tr");
                     document.getElementById("searchResult").appendChild(trData);
                     let tdProductId = document.createElement("td");
@@ -59,14 +63,71 @@ function productSearch(field){
                     linkUpdate.id = element.productId;
                     linkUpdate.setAttribute('onclick', `productDetail(${element.productId})`);
                     tdUpdate.appendChild(linkUpdate);                  
-                });
+                ;
             }
             else{
              console.log("User wrong")
             }
         } );
     }
-    else {}
+    else if (field2!= ''){    // let insuranceID = document.getElementById("insuranceID").value;
+        // const params = {
+        //     firstName ,
+        //     lastName,
+        //     cellPhone,
+        //     homePhone,
+        //     email
+        // };
+        // //console.log(params);
+        // const options = {
+        //     method: 'POST',
+        //     headers: {
+        //         // 'Accept': 'application/json, text/plain, */*',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify( params )
+        // };
+        fetch( 'http://localhost:8080/insurance/findbypolicynumber?policyNumber=' + field2)
+            .then( response => response.json() ).then( response => {
+                products = response;
+                console.log(response)
+                console.log(products)  
+                if(response != []) {
+                    document.getElementById("searchResult").innerHTML = "";
+                    element = response;
+                        let trData = document.createElement("tr");
+                        document.getElementById("searchResult").appendChild(trData);
+                        let tdProductId = document.createElement("td");
+                        tdProductId.innerHTML = element.productId;
+                        trData.appendChild(tdProductId);
+                        let tdProductCode = document.createElement("td");
+                        tdProductCode.innerHTML = element.productCode;
+                        trData.appendChild(tdProductCode);
+                        let tdInsuranceID = document.createElement("td");
+                        tdInsuranceID.innerHTML = element.insurance.insuranceId;
+                        trData.appendChild(tdInsuranceID);
+                        let tdPolicyNum = document.createElement("td");
+                        tdPolicyNum.innerHTML = element.insurance.policyNumber;
+                        trData.appendChild(tdPolicyNum);
+                        let tdApplicationNum = document.createElement("td");
+                        tdApplicationNum.innerHTML = element.insurance.applicationNumber;
+                        trData.appendChild(tdApplicationNum);
+                        let tdUpdate = document.createElement("td");
+                        trData.appendChild(tdUpdate);
+                        let linkUpdate = document.createElement("td");
+                        linkUpdate.innerHTML = "Details";
+                        linkUpdate.className = "btn";
+                        linkUpdate.style.backgroundColor = "LightSteelBlue";
+                        linkUpdate.id = element.productId;
+                        linkUpdate.setAttribute('onclick', `productDetail(${element.productId})`);
+                        tdUpdate.appendChild(linkUpdate);                  
+                    ;
+                }
+                else{
+                 console.log("User wrong")
+                }
+            } );
+        }
 }
 
 function productDetail(productID) {
@@ -80,36 +141,23 @@ function productDetail(productID) {
         if (product.productId === productID) {
             //console.log(`${client.clientId}`)
             console.log(product)
+            console.log(product.insurance.insuranceId)
 
             // for (const key in client) {
             //     document.getElementById(`${key}`).value = `${client[key]}`;
             //  }
-            document.getElementById("address").value = client.address;
-            document.getElementById("age").value = client.age;
-            document.getElementById("cellPhone").value = client.cellPhone;
-            document.getElementById("citizenship").value = client.citizenship;
-            document.getElementById("clientId").value = client.clientId;
-            document.getElementById("dateOfBirth").value = client.dateOfBirth;
-            document.getElementById("email").value = client.email;
-            document.getElementById("facebookId").value = client.facebookId;
-            document.getElementById("firstname").value = client.firstname;
-            document.getElementById("gender").value = client.gender;
-            document.getElementById("homePhone").value = client.homePhone;
-            document.getElementById("instagramId").value = client.instagramId;
-            document.getElementById("lastUpdate").value = client.lastUpdate;
-            document.getElementById("linkedinId").value = client.linkedinId;
-            document.getElementById("maritalStatus").value = client.maritalStatus;
-            document.getElementById("planId").value = client.planId;
-            document.getElementById("postalCode").value = client.postalCode;
-            document.getElementById("referredBy").value = client.referredBy;
-            document.getElementById("segfundNum").value = client.segfundNum;
-            document.getElementById("sin").value = client.sin;
-            document.getElementById("source").value = client.source;
-            document.getElementById("status").value = client.status;
-            document.getElementById("twitterId").value = client.twitterId;
-            document.getElementById("wechatId").value = client.wechatId;
-            document.getElementById("lastName").value = client.lastName
-            document.getElementById("giftGiven").value = client.giftGiven;
+            document.getElementById("productcode").value = product.productCode;
+            document.getElementById("productID").value = product.productId;
+            document.getElementById("insuranceId2").value = product.insurance.insuranceId;
+            document.getElementById("policyNum2").value = product.insurance.policyNumber;
+            document.getElementById("applicationNum").value = product.insurance.applicationNumber;
+            document.getElementById("applicationDate").value = product.insurance.applicationDate;
+            document.getElementById("enforcementDate").value = product.insurance.enforcementDate;
+            document.getElementById("coverageAmount").value = product.insurance.coverageAmount;
+            document.getElementById("additionalDeposit").value = product.insurance.additionalDeposit;
+            document.getElementById("paymentTime").value = product.insurance.paymentTime;
+            document.getElementById("riders").value = product.insurance.riders;
+            document.getElementById("province").value = product.insurance.province;
             // document.getElementById("productList").value = client.productList;
 
 

@@ -33,7 +33,8 @@ function clientSearch(){
     fetch( 'http://localhost:8080/client/findByDync', options )
         .then( response => response.json() ).then( response => {
             clients = response;
-            console.log(response)  
+            console.log(response)
+            console.log(clients)  
             if(response != []) {
                 document.getElementById("searchResult").innerHTML = "";
                 response.forEach(element => {
@@ -88,15 +89,15 @@ function clientDetail(clientID) {
             //  }
             document.getElementById("address").value = client.address;
             document.getElementById("age").value = client.age;
-            document.getElementById("cellPhone").value = client.cellPhone;
+            document.getElementById("cellPhone2").value = client.cellPhone;
             document.getElementById("citizenship").value = client.citizenship;
             document.getElementById("clientId").value = client.clientId;
             document.getElementById("dateOfBirth").value = client.dateOfBirth;
-            document.getElementById("email").value = client.email;
+            document.getElementById("email2").value = client.email;
             document.getElementById("facebookId").value = client.facebookId;
             document.getElementById("firstname").value = client.firstname;
             document.getElementById("gender").value = client.gender;
-            document.getElementById("homePhone").value = client.homePhone;
+            document.getElementById("homePhone2").value = client.homePhone;
             document.getElementById("instagramId").value = client.instagramId;
             document.getElementById("lastUpdate").value = client.lastUpdate;
             document.getElementById("linkedinId").value = client.linkedinId;
@@ -110,7 +111,7 @@ function clientDetail(clientID) {
             document.getElementById("status").value = client.status;
             document.getElementById("twitterId").value = client.twitterId;
             document.getElementById("wechatId").value = client.wechatId;
-            document.getElementById("lastName").value = client.lastName
+            document.getElementById("lastname").value = client.lastName
             document.getElementById("giftGiven").value = client.giftGiven;
             // document.getElementById("productList").value = client.productList;
 
