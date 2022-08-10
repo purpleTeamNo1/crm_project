@@ -20,6 +20,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -57,6 +59,7 @@ public class UserServiceImpl implements UserService {
         String passwordMd5 = Md5Utils.md5Generator(registryDTO.getPassword());
         registryDTO.setPassword(passwordMd5);
         BeanUtils.copyProperties(registryDTO, user);
+
         Role role = roleRepository.findRoleByRoleId(registryDTO.getRoleId());
         if(role == null){
             return Result.error("500", "Assigned role does not exist.");

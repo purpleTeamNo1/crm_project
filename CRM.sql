@@ -2,7 +2,7 @@
 -- create schema crmproject;
 -- set search_path to crmproject;
 
-drop table if exists role;
+drop table if exists role cascade ;
 create table role
 (
     role_id     integer generated always as identity primary key,
@@ -24,7 +24,7 @@ values ('Administrator', 'Access to control panel, create ,delete,view, configur
                 'View, configure, and manage projects for which they have a project role; Edit their account information. ' ||
                 'Cannot:Access the Control Panel');
 
-drop table if exists tbuser;
+drop table if exists tbuser cascade;
 create table tbuser
 (
     user_id     integer generated always as identity primary key,
@@ -46,7 +46,7 @@ values ('John', '251gqe', 'Ada', 'Smith', 'john@example.com',1),
 
 
 
-drop table if exists client;
+drop table if exists client cascade;
 create table client
 
 (
@@ -111,7 +111,7 @@ values (0, 'Alice', 'Tyler', '1990-08-31', '32', '514-784-6899',
            , 'female', 'separated', 'Others', 'Others', 'Jean Cat', 'true',
         'g1gahgl9gga545', '1ggaklgag6GK', '1g3ghoagasidIER', '9232kf39k39imfJ', '43ij3r98Gah9eA', '4a9gagopgmS', '4' ||
                                                                                                                  '2dgagsa');
-drop table if exists toDoList;
+drop table if exists toDoList cascade;
 create table toDoList
 (
     toDoId      integer generated always as identity primary key,
@@ -134,7 +134,7 @@ values ('Appointment with Alice ', 'discuss about the new tax saving plan tfsa',
        ('Play tennis with Anne ', 'discuss about tax planning', 3, '2022-12-31', false, '101 st denis',3),
        ('Appointment with Ron ', 'discuss about the travel insurance', 4, '2023-08-31', true, '101 st laurent',4);
 
-drop table if exists Insurance;
+drop table if exists Insurance cascade;
 create table Insurance
 (
     insuranceID          integer generated always as identity primary key,
@@ -154,12 +154,12 @@ create table Insurance
 
 );
 insert into Insurance (policyNumber,applicationNumber,applicationDate,COI,enforcementDate, maturityDate ,coverageAmount,additionalDeposit  , PaymentTime ,  riders,province)
-values ('mica','A8785','E985353','2022-08-06', 5000.23,'2022-09-01','2032-09-01',500000.00, 280.90,10,'CPR','QC'),
-       ('gica','B8785','E8545353','2022-09-06', 6000.23,'2022-10-01','2032-10-01',600000.00, 300.90,10,'GIO','ON'),
-       ('termca','A7785','E985853','2022-08-06', 7000.23,'2022-11-01','2032-11-01',700000.00, 280.90,10,'CPR','QC'),
-       (' di65ca','A4576','E14311','2022-01-06', 8000.23,'2022-12-01','2032-12-01',800000.00, 280.90,10,'TDW','BC');
+values ('A8785','E985353','2022-08-06', 5000.23,'2022-09-01','2032-09-01',500000.00, 280.90,10,'CPR','QC'),
+       ('B8785','E8545353','2022-09-06', 6000.23,'2022-10-01','2032-10-01',600000.00, 300.90,10,'GIO','ON'),
+       ('A7785','E985853','2022-08-06', 7000.23,'2022-11-01','2032-11-01',700000.00, 280.90,10,'CPR','QC'),
+       ('A4576','E14311','2022-01-06', 8000.23,'2022-12-01','2032-12-01',800000.00, 280.90,10,'TDW','BC');
 
-drop table if exists Product;
+drop table if exists Product cascade;
 create table Product
 (
     ProductID   integer generated always as identity primary key,
@@ -170,10 +170,10 @@ create table Product
 insert into Product (ProductCode,insuranceid)
 values ('parca',1),
        ('termca',2),
-       ('termca',3),
+       ('termca1',3),
        (' di65ca',4);
 
-drop table if exists ClientProduct;
+drop table if exists ClientProduct cascade;
 create table ClientProduct
 (
     sys_client_id

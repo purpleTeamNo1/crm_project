@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -46,5 +48,12 @@ public class UserTest {
     public void findallTest(){
         List<User> all = userService.findAllUser(0,5);
         System.out.println(all);
+    }
+
+    @Test
+    public void timeStampGenerator(){
+        long currentTime = new Date().getTime();
+        Timestamp timestamp = new Timestamp(currentTime);
+        System.out.println(timestamp);
     }
 }
