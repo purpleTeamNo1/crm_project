@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" type=image/png href=https://animaproject.s3.amazonaws.com/home/favicon.png />
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="../client-pages/css/kyc.css" />
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../client-pages/css/styleguide.css" />
+  <link rel="stylesheet" type="text/css" href="../client-pages/css/globals.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script type="text/javascript" src="../scripts/login.js"></script>
+    <script type="text/javascript" src="../scripts/kyc.js"></script>
+</head>
+
+<body style="margin: 0; background: #f4f7fc">
+  <input type="hidden" id="anPageName" name="page" value="kyc" />
+  <div class="container-center-horizontal">
+    <div class="kyc screen">
+      <div class="topbar">
+        <div class="overlap-group">
+          <img class="logo-dark-blue-eng-chn-jw"
+            src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2c3fee2bc8ffa80bddb3/img/logo-dark-blue-eng-chn-jw-1@1x.png" />
+          <div class="button-raised-filled-left-disabled-theme">
+            <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
+              <span class="mdc-button__ripple"></span>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
+              <span class="mdc-button__label">Logout</span>
+            </button>
+            <script>
+              mdc.autoInit();
+              new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="sidebar">
+          <div class="home">
+            <img class="icon-home"
+              src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-home-1@1x.png" />
+            <div class="label-home poppins-medium-mirage-14px"><a href="../home.html">Home</a></div>
+          </div>
+          <div class="client-management">
+            <img class="icon-calendar"
+              src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-calendar-1@1x.png" />
+            <div class="label-client-management poppins-medium-mirage-14px"><a href="../client.html">Client Management</a></div>
+          </div>
+          <div class="t-management">
+            <img class="ic_invoice"
+              src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2befdd3a2af789bdd24c/img/ic-invoice@1x.png" />
+            <div class="label-product-management poppins-medium-mirage-14px"><a href="../product.html">Product Management</a></div>
+          </div>
+          <div class="analytics">
+            <img class="ic_dashboard"
+              src="https://anima-uploads.s3.amazonaws.com/projects/62ebc7edd77cd04391b0f9fe/releases/62ef2c3fee2bc8ffa80bddb3/img/ic-dashboard-10@1x.png" />
+            <div class="label-analytics poppins-medium-mirage-14px"><a href="../home.html">Analytics</a></div>
+          </div>
+        </div>
+        <div class="flex-col">
+          <div class="page-header poppins-bold-mirage-24px">CLIENT NAME GOES HERE</div>
+          <!-- Client Info Container Start -->
+          <div class="client-info-container border-1px-dove-gray">
+            <h1 class="title poppins-semibold-semi-bold-vulcan-28px-2">Client Info</h1>
+            <div class="lorem-ipsum-dolor-si poppins-bold-mirage-12px">
+              <form class="form-container2">
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" style="width:150px" placeholder="" name="Last Name" id="lastName" required disabled>
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" style="width:150px" placeholder="" name="First Name" id="firstName" required disabled>
+                <label for="SIN"><b>SIN</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Last Name" id="SIN" required disabled>
+                <label for="DOB"><b>DOB</b></label>
+                <input type="date" style="width:110px" name="DOB" id="DOB" value="2022-08-09" min="1900-01-01" max="2032-08-09" required
+                  disabled>
+                  <label for="age"><b>Age</b></label>
+                <input type="text" style="width:40px" placeholder="" name="Age" id="age" required disabled>
+                <label for="gender"><b>Gender</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Gender" id="gender" required disabled>
+                <label for="address"><b>Address</b></label>
+                <input type="text" placeholder="" name="Address" id="address" required disabled>
+                <br>
+                <label for="postalCode"><b>Postal Code</b></label>
+                <input type="text" style="width:60px" placeholder="" name="Postal Code" id="postalCode" required disabled>
+                <label for="homePhone"><b>Home Phone</b></label>
+                <input type="tel" style="width:110px" placeholder="" name="Home Phone" id="homePhone" required disabled>
+                <label for="cellPhone"><b>Cell Phone</b></label>
+                <input type="tel" style="width:110px" placeholder="" name="Cell Phone" id="cellPhone" required disabled>
+                <label for="email"><b>Email</b></label>
+                <input type="email" style="width:180px" placeholder="" name="Email" id="email" required disabled>
+                <label for="martialStatus"><b>Marital Status</b></label>
+                <input type="text" style="width:80px" placeholder="" name="Marital Status" id="maritalStatus" disabled>
+                <label for="citizenship"><b>Citizenship</b></label>
+                <input type="text" placeholder="" name="Citizenship" id="citizenship" required disabled>
+                <hr>
+                <label for="status"><b>Status</b></label>
+                <input type="text" style="width:50px" placeholder="" name="Status" id="status" disabled>
+                <label for="otherClientID"><b>Client ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Other Client ID" id="otherClientID" disabled>
+                <label for="planID"><b>Plan ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Plan ID" id="planID" disabled>
+                <label for="segFundsNum"><b>SEG Funds #</b></label>
+                <input type="text" style="width:110px" placeholder="" name="SEG Funds #" id="segFundsNum" disabled>
+                <hr>
+                <label for="weChatID"><b>WeChat ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="WeChat ID" id="weChatID" disabled>
+                <label for="instagramID"><b>Instagram ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Instagram ID" id="instagramID" disabled>
+                <label for="linkedInID"><b>LinkedIn ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="LinkedIn ID" id="linkedInID" disabled>
+                <label for="facebookID"><b>Facebook ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Facebook ID" id="facebookID" disabled>
+                <br>
+                <label for="twitterID"><b>Twitter ID</b></label>
+                <input type="text" style="width:110px" placeholder="" name="Twitter ID" id="twitterID" disabled>
+                <label for="source"><b>Source</b></label>
+                <select name="source" style="width:150px" id="source" disabled>
+                  <option value="By Client">By Client</option>
+                  <option value="By Friend">By Friend</option>
+                  <option value="By Social Media">By Social Media</option>
+                  <option value="By Advertisement">By Advertisement</option>
+                  <option value="By Other">By Other</option></select>
+                  <label for="referredBy"><b>Referred By</b></label>
+                  <input type="text" placeholder="" name="Referred By" id="referredBy" required disabled>
+                  <br>
+                  <label for="sentGift"><b>Send Gift/Check?</b></label>
+                  <input type="checkbox" style="width:30px" placeholder="" name="Send Gift/Check" id="sentGift" required disabled>
+              </form>
+            </div>
+            <div class="button-raised-fil-container">
+              <div class="button-raised-filled">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
+                  <span class="mdc-button__label">Save</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled .mdc-button"));
+                </script>
+              </div>
+              <div class="edit-button-raised-f">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">edit_note</i>
+                  <span class="mdc-button__label">Edit</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".edit-button-raised-f .mdc-button"));
+                </script>
+              </div>
+            </div>
+          </div>
+          <!-- Client Info Container End -->
+          <!-- Client Contract Container Start -->
+          <div class="client-contracts-container border-1px-dove-gray">
+            <div class="title-1 poppins-semibold-semi-bold-vulcan-28px-2">Client Contracts</div>
+            <div class="button-raised-fil-container-1">
+              <div class="button-raised-filled-1">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="loadIntoTableCC()">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">document_scanner</i>
+                  <span class="mdc-button__label">New</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-1 .mdc-button"));
+                </script>
+              </div>
+              <div class="edit-button-raised-f-1">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">edit_note</i>
+                  <span class="mdc-button__label">Edit</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".edit-button-raised-f-1 .mdc-button"));
+                </script>
+              </div>
+            </div>
+            <div class="lorem-ipsum-dolor-si-1 poppins-bold-mirage-12px">
+              <table class="table" table id="tableCC">
+                <thead>
+                  <tr>
+                    <th id="th1">ID</th>
+                    <th id="th2">Policy #</th>
+                    <th id="th3">Application #</th>
+                    <th id="th4">Application</th>
+                    <th id="th5">COI</th>
+                    <th id="th6">Enforcement</th>
+                    <th id="th7">Maturity</th>
+                    <th id="th8">Coverage</th>
+                    <th id="th9">Add. Deposit</th>
+                    <th id="th10">Payment Time</th>
+                    <th id="th11">Riders</th>
+                    <th id="th12">Province</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- tbody filled by script -->
+                </tbody>
+              </table>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                crossorigin="anonymous"></script>
+            </div>
+          </div>
+          <!-- Client Contract Container End -->
+          <!-- Client TDL Container Start -->
+          <div class="client-to-do-list-container border-1px-dove-gray">
+            <div class="flex-row-1">
+              <div class="flex-col-1">
+                <div class="title-2 poppins-semibold-semi-bold-vulcan-28px-2">Client To Do List</div>
+                <div class="button-raised-fil-container-2">
+                  <div class="button-raised-filled-1">
+                    <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                      <span class="mdc-button__ripple"></span>
+                      <i class="material-icons mdc-button__icon" aria-hidden="true">document_scanner</i>
+                      <span class="mdc-button__label">New</span>
+                    </button>
+                    <script>
+                      mdc.autoInit();
+                      new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-1 .mdc-button"));
+                    </script>
+                  </div>
+                  <div class="edit-button-raised-f-1">
+                    <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                      <span class="mdc-button__ripple"></span>
+                      <i class="material-icons mdc-button__icon" aria-hidden="true">edit_note</i>
+                      <span class="mdc-button__label">Edit</span>
+                    </button>
+                    <script>
+                      mdc.autoInit();
+                      new mdc.ripple.MDCRipple(document.querySelector(".edit-button-raised-f-1 .mdc-button"));
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div class="drop-down-filled-dis">
+                <select id="comboSort" onchange="loadIntoTableTDL()">
+                  <option value=1>ID</option>
+                  <option value=2>Priority</option>
+                  <option value=3>Name (Last)</option>
+                  <option value=4>Due Date</option>
+                </select>
+              </div>
+            </div>
+            <div class="lorem-ipsum-dolor-si-1 poppins-bold-mirage-12px">
+              <table class="table" table id="tableTDL">
+                <thead>
+                  <tr>
+                    <th id="th1">ID</th>
+                    <th id="th2">Title</th>
+                    <th id="th3">Description</th>
+                    <th id="th4">Priority</th>
+                    <th id="th5">Last Update</th>
+                    <th id="th6">Due Date</th>
+                    <th id="th7">Location</th>
+                    <th id="th8">Client</th>
+                    <th id="th9">Completion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- tbody filled by script -->
+                </tbody>
+              </table>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                crossorigin="anonymous"></script>
+            </div>
+          </div>
+          <!-- Client TDL Container End -->
+          <!-- Notes/Comments Container Start -->
+          <div class="ment border-1px-dove-gray">
+            <div class="title poppins-semibold-semi-bold-vulcan-28px-2">Notes/Comment</div>
+            <div class="lorem-ipsum-dolor-si poppins-bold-mirage-12px">
+              <label for="weChatID"><b>Subject/Title</b></label>
+              <input type="text" placeholder="" name="Subject/Title" id="subjectTitle" style="width:1000px">
+              <textarea name="notesandcomments"
+                style="width:1558px; height:400px; resize:none; margin-top: 10px;"></textarea>
+            </div>
+            <div class="button-raised-fil-container">
+              <div class="button-raised-filled">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
+                  <span class="mdc-button__label">Save</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled .mdc-button"));
+                </script>
+              </div>
+              <div class="edit-button-raised-f">
+                <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                  <span class="mdc-button__ripple"></span>
+                  <i class="material-icons mdc-button__icon" aria-hidden="true">edit_note</i>
+                  <span class="mdc-button__label">Edit</span>
+                </button>
+                <script>
+                  mdc.autoInit();
+                  new mdc.ripple.MDCRipple(document.querySelector(".edit-button-raised-f .mdc-button"));
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="ment border-1px-dove-gray">
+            <div class="title poppins-semibold-semi-bold-vulcan-28px-2">Attachment</div>
+            <div class="lorem-ipsum-dolor-si poppins-bold-mirage-12px">
+              Implementation on hold pending hosting solution.
+            </div>
+            <div class="button-raised-filled-2">
+              <button class="mdc-button mdc-button--raised" data-id="anima-widget">
+                <span class="mdc-button__ripple"></span>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">file_upload</i>
+                <span class="mdc-button__label">Upload</span>
+              </button>
+              <script>
+                mdc.autoInit();
+                new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-2 .mdc-button"));
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

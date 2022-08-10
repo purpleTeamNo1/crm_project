@@ -1,7 +1,7 @@
 //THINGS THAT NEED TO BE FIXED
 // 1. Make it so that loadIntoTable() is run when the page is loaded
 
-// document.addEventListener('DOMContentLoaded', getSort(1));
+document.addEventListener('DOMContentLoaded', loadIntoTableInitial());
 
 //vvvvvvvvvvvvvvv Adding & Editing Table vvvvvvvvvvvvvvv
 
@@ -168,8 +168,63 @@ async function loadIntoTable() {
   const response = await fetch(url); //waits until completion
   const data = await response.json(); //waits until completion
 
-  //   console.log(url);
-  console.log(data);
+  //Checks to see how many columns the table needs
+
+  var col = [];
+  for (var i = 0; i < data.length; i++) {
+    for (var key in data[i]) {
+      if (col.indexOf(key) === -1) {
+        col.push(key);
+      }
+    }
+  }
+
+  console.log(col);
+
+  //Gets the pre-existing table (with predetermined headers) ready by wiping it before insertion.
+
+  const table = document.getElementById("table");
+  const tableBody = table.querySelector("tbody");
+  tableBody.innerHTML = "";
+  var tr = tableBody.insertRow(-1);
+
+  //Printing rows
+  for (var i = 0; i < data.length; i++) {
+    tr = table.insertRow(-1);
+
+    //Printing columns
+    for (var j = 0; j < col.length + 1; j++) {
+      if (j == 0) {
+        //makes the tr's ID = todoID. This is used later when searching by todoID.
+        tr.setAttribute("id", data[i][col[j]]);
+      }
+      var tabCell = tr.insertCell(-1);
+
+      if (j == 7) {
+        //special condition for Client column (7), which is a nested JSON and also needs to be concat for fullname
+        data2 = data[i].client;
+        fullName = data2.firstname + " " + data2.lastName;
+        tabCell.innerHTML = fullName;
+      } else if (j == 8) {
+        //note column isn't currently used, filling with next column's data instead
+        tabCell.innerHTML = data[i][col[j + 1]];
+        j++;
+      } else if (j == 10) {
+        //extra column used to record clientID, won't be rendered
+        clientID = data2.clientId;
+        console.log(clientID);
+        tabCell.innerHTML = clientID;
+      } else {
+        tabCell.innerHTML = data[i][col[j]];
+      }
+    }
+  }
+}
+async function loadIntoTableInitial() {//Used to load table when page loads. Find a way to get rid of this later.
+  let url = "http://localhost:8080/todos/findAll?page=0&size=50&sortBy=todoId";
+
+  const response = await fetch(url); //waits until completion
+  const data = await response.json(); //waits until completion
 
   //Checks to see how many columns the table needs
 
@@ -221,15 +276,5 @@ async function loadIntoTable() {
         tabCell.innerHTML = data[i][col[j]];
       }
     }
-    //add extra column for Action (Need to find a way to give these elements unique IDs.)
-    //   var tabCell = tr.insertCell(-1);
-    //   selectName = "todoactions" + i;
-    //   tabCell.innerHTML = `<select name="todoactions" id="todoactions">
-    //   <option value="actiondefault">Choose:</option>
-    //   <option value="edit">Edit</option>
-    //   <option value="markcomplete">Mark Complete</option>
-    //   <option value="markincomplete">Mark Incomplete</option>
-    //   <option value="delete">Delete</option>
-    // </select>`;
   }
 }

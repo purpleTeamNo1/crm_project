@@ -1,0 +1,50 @@
+:root { 
+  --dove-gray: #707070;
+  --mirage: #171725;
+  --vulcan: #131523;
+  --white: #ffffff;
+  --zircon: #f4f7fc;
+ 
+  --font-size-m2: 14px;
+  --font-size-s: 12px;
+  --font-size-xxxl2: 28px;
+  --font-size-xxxl3: 24px;
+ 
+  --font-family-poppins: "Poppins", Helvetica;
+  --font-family-poppins-semibold-bold: "Poppins-SemiBold-Bold", Helvetica;
+}
+.poppins-semibold-semi-bold-vulcan-28px-2 {
+  color: var(--vulcan);
+  font-family: var(--font-family-poppins-semibold-bold);
+  font-size: var(--font-size-xxxl2);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.poppins-bold-mirage-12px {
+  color: var(--mirage);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.poppins-medium-mirage-14px {
+  color: var(--mirage);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m2);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.poppins-bold-mirage-24px {
+  color: var(--mirage);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xxxl3);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.border-1px-dove-gray {
+  border: 1px solid var(--dove-gray);
+}

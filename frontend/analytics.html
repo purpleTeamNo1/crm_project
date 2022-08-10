@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/00-login.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="css/page-template.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"/>
@@ -15,62 +14,72 @@
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script type="text/javascript" src="scripts/todolist.js"></script>
     <script type="text/javascript" src="./scripts/login.js"></script>
-    <title>Analytics</title>
-</head>
-<body>
-<input type="hidden" id="anPageName" name="page" value="page-template" />
-<div class="container-center-horizontal">
-    <div class="page-template screen">
+    <title>Home</title>
+  </head>
+  <body>
+    <input type="hidden" id="anPageName" name="page" value="page-template" />
+    <div class="container-center-horizontal">
+      <div class="page-template screen">
         <div class="topbar">
-            <div class="overlap-group">
-                <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
-                <div class="button-raised-filled-left-disabled-theme">
-                    <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
-                        <span class="mdc-button__ripple"></span>
-                        <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
-                        <span class="mdc-button__label">Logout</span>
-                    </button>
-                    <script>
-                        mdc.autoInit();
-                        new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
-                    </script>
-                </div>
+          <div class="overlap-group">
+            <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
+            <div class="button-raised-filled-left-disabled-theme">
+              <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
+                <span class="mdc-button__ripple"></span>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
+                <span class="mdc-button__label">Logout</span>
+              </button>
+              <script>
+                mdc.autoInit();
+                new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
+              </script>
             </div>
+          </div>
         </div>
         <div class="flex-row">
-            <div class="sidebar">
-                <div class="home">
-                    <img class="icon" src="img/ic-home-1@1x.png" />
-                    <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
-                </div>
-                <div class="client-management">
-                    <img class="icon" src="img/ic-calendar-1@1x.png" />
-                    <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
-                        Management</a></div>
-                </div>
-                <div class="sidebar-item">
-                    <img class="ic_invoice" src="img/ic-invoice@1x.png" />
-                    <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
-                        Management</a></div>
-                </div>
-                <div class="sidebar-item">
-                    <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
-                    <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
-                </div>
+          <div class="sidebar">
+            <div class="home">
+              <img class="icon" src="img/ic-home-1@1x.png" />
+              <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
             </div>
-            <div class="flex-col">
-                <div class="page-header">Analytics</div>
-                <div class="content-container border-1px-dove-gray">
-                    <div class="flex-row-1">
-                        <div class="flex-col-1">
-                            <div class="title">Under Construction - Phase 2 of the project</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="client-management">
+              <img class="icon" src="img/ic-calendar-1@1x.png" />
+              <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
+                Management</a></div>
             </div>
+            <div class="sidebar-item">
+              <img class="ic_invoice" src="img/ic-invoice@1x.png" />
+              <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
+                Management</a></div>
+            </div>
+            <div class="sidebar-item">
+              <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
+              <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
+            </div>
+          </div>
+          <div class="flex-col">
+            <div class="page-header">Analytics</div>
+            <div class="content-container border-1px-dove-gray">
+              <div class="flex-row-1">
+                <div class="flex-col-1">
+                  <div class="title">For Phase 2</div>
+                
+                </div>
+              </div>
+              <div class="lorem-ipsum-dolor-si">
+                <img src="img/powerbi.png">
+            </div>
+
+          </div>
+          
+          </div>
         </div>
+        </div>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
