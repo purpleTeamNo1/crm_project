@@ -22,6 +22,9 @@ values ('Administrator', 'Access to control panel, create ,delete,view, configur
                 'Cannot:Access the Control Panel'),
        ('User', 'Can:Create and delete data sets and projects;Transform data within a project;' ||
                 'View, configure, and manage projects for which they have a project role; Edit their account information. ' ||
+                'Cannot:Access the Control Panel'),
+        ('User', 'Can:Create and delete data sets and projects;Transform data within a project;' ||
+                'View, configure, and manage projects for which they have a project role; Edit their account information. ' ||
                 'Cannot:Access the Control Panel');
 
 drop table if exists tbuser cascade;
@@ -42,8 +45,8 @@ insert into tbuser (username, password, firstName, lastName, email,role_id)
 values ('John', '251gqe', 'Ada', 'Smith', 'john@example.com',1),
        ('Jane', '75giodgqe$', 'Ron', 'Chen', 'jane@example.com',2),
        ('Joe', '0gidg#qe$', 'Adam', 'Emile', 'joe@example.com',3),
-       ('Ane', 'GKgiodgqe#', 'Joseph', 'Bird', 'jane@example.com',4);
-
+       ('Ane', 'GKgiodgqe#', 'Joseph', 'Bird', 'jane@example.com',4),
+        ('Annie', 'Giodgqe#', 'Tom', 'Chuang', 'tom@example.com',5);
 
 
 drop table if exists client cascade;
@@ -106,6 +109,10 @@ values (0, 'Alice', 'Tyler', '1990-08-31', '32', '514-784-6899',
         '880-784-6807', 'aweeai1sagk@gmail.com', '10 st antoine st', 'g8h 1g1', '362858121'
            , 'female', 'common law', 'Others', 'client', 'Ana Cote', 'true',
         'gahgl9gga545', 'gaklgag6GK', '3ghoagasidIER', '2kf39k39imfJ', '3ij3r98Gah9eA', 'a9gagopgmS', '2dgagsa'),
+       (0, 'Ashley', 'Gates', '1950-08-31', '72', '514-884-6899',
+        '514-884-6807', 'gate@gmail.com', '50 st laurant st', 'j7g 2g1', '758858121'
+           , 'female', 'single', 'Canadian', 'client', 'Peter Wang', 'false',
+        '938545', '4986GK', 'GJAIER', 'GAGJ', 'GKJSA', 'GKAS', 'IUE'),
        (3, 'Shel', 'Bonjour', '1950-08-31', '72', '378-784-6899',
         '378-784-6807', 'aweeadasi1sagk@gmail.com', '101 st antoine st', 'g8h 1g1', '161858121'
            , 'female', 'separated', 'Others', 'Others', 'Jean Cat', 'true',
@@ -132,6 +139,8 @@ values ('Appointment with Alice ', 'discuss about the new tax saving plan tfsa',
         '101 st faucon',1),
        ('Call Nina ', 'discuss about resp', 2, '2022-08-31', false, '101 st sauver',2),
        ('Play tennis with Anne ', 'discuss about tax planning', 3, '2022-12-31', false, '101 st denis',3),
+       ('Appointment with Ashley ', 'discuss about the Lira', 1, '2022-08-31', true,
+        '12 st faucon',5),
        ('Appointment with Ron ', 'discuss about the travel insurance', 4, '2023-08-31', true, '101 st laurent',4);
 
 drop table if exists Insurance cascade;
@@ -157,6 +166,7 @@ insert into Insurance (policyNumber,applicationNumber,applicationDate,COI,enforc
 values ('A8785','E985353','2022-08-06', 5000.23,'2022-09-01','2032-09-01',500000.00, 280.90,10,'CPR','QC'),
        ('B8785','E8545353','2022-09-06', 6000.23,'2022-10-01','2032-10-01',600000.00, 300.90,10,'GIO','ON'),
        ('A7785','E985853','2022-08-06', 7000.23,'2022-11-01','2032-11-01',700000.00, 280.90,10,'CPR','QC'),
+       ('A7786','E985850','2022-08-06', 5000.23,'2022-11-01','2032-11-01',700000.00, 280.90,10,'CPR','QC'),
        ('A4576','E14311','2022-01-06', 8000.23,'2022-12-01','2032-12-01',800000.00, 280.90,10,'TDW','BC');
 
 drop table if exists Product cascade;
@@ -171,8 +181,8 @@ insert into Product (ProductCode,insuranceid)
 values ('parca',1),
        ('termca',2),
        ('termca1',3),
-       (' di65ca',4);
-
+       (' di65ca',4),
+        (' hi65ca',5);
 drop table if exists ClientProduct cascade;
 create table ClientProduct
 (
@@ -193,52 +203,53 @@ create table ClientProduct
 values (1, 2),
        (2, 1),
        (3, 4),
+        (5, 5),
        (4, 3);
 
 --count the active customer, inactive customers, prospects ,status of client (0: Inactive, 1: Prospect, 2: Active)
-select status,count(status) from client
-       group by status
-order by status ;
-
-
-
-SELECT * FROM client WHERE client.lastName =('Tyler');
-SELECT * FROM client WHERE CLIEnT.FIRSTName = ('Alice');
-select * from todolist where priority =1;
-
-SELECT C.CLIENT_ID, PRIORITY ,DUEDATE,P.PRODUCTCODE,firstName,lastName
-    FROM  CLIENT C
-    INNER JOIN TODOLIST T ON C.CLIENT_ID = T.client_id
-    INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
-        INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
-WHERE LASTNAME = ('Tyler')
-ORDER BY DUEDATE;
-
--- search by customer last name, the insurance policy number, coverage amount, productcode, etc.
-SELECT C.CLIENT_ID, P.PRODUCTCODE, i.policyNumber,i.coverageAmount,firstName,lastName
-    FROM  CLIENT C
-        INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
-        INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
-WHERE C.firstName = ('TYLER')
-ORDER BY policyNumber ;
-
---sum of the total coi(cost of insurance) & coverage amount by each client's name
-SELECT firstName,lastName,sum(i.coi) Total_CostOf_Insurance,sum(i.coverageAmount) Total_Coverage_Amount
-    FROM  CLIENT C
-        INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
-        INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
-        INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
-group by c.lastName,c.firstName
-ORDER BY c.lastname,c.firstName ;
-
---count total number of users by each role
-SELECT r.role_id, count(user_id) total_Number_Of_Users
-    FROM  role r
-        INNER JOIN tbuser u ON r.role_id=U.role_id
-        group by R.role_id
-ORDER BY R.role_id ;
+-- select status,count(status) from client
+--        group by status
+-- order by status ;
+--
+--
+--
+-- SELECT * FROM client WHERE client.lastName =('Tyler');
+-- SELECT * FROM client WHERE CLIEnT.FIRSTName = ('Alice');
+-- select * from todolist where priority =1;
+--
+-- SELECT C.CLIENT_ID, PRIORITY ,DUEDATE,P.PRODUCTCODE,firstName,lastName
+--     FROM  CLIENT C
+--     INNER JOIN TODOLIST T ON C.CLIENT_ID = T.client_id
+--     INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+--         INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
+--         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
+-- WHERE LASTNAME = ('Tyler')
+-- ORDER BY DUEDATE;
+--
+-- -- search by customer last name, the insurance policy number, coverage amount, productcode, etc.
+-- SELECT C.CLIENT_ID, P.PRODUCTCODE, i.policyNumber,i.coverageAmount,firstName,lastName
+--     FROM  CLIENT C
+--         INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+--         INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
+--         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
+-- WHERE C.firstName = ('TYLER')
+-- ORDER BY policyNumber ;
+--
+-- --sum of the total coi(cost of insurance) & coverage amount by each client's name
+-- SELECT firstName,lastName,sum(i.coi) Total_CostOf_Insurance,sum(i.coverageAmount) Total_Coverage_Amount
+--     FROM  CLIENT C
+--         INNER JOIN CLIENTPRODUCT CP ON CP.sys_client_id=C.client_id
+--         INNER JOIN pRODUCT P ON P.PRODUCTID=CP.sys_product_id
+--         INNER JOIN INSURANCE I ON I.INSURANCEID=P.InsuranceID
+-- group by c.lastName,c.firstName
+-- ORDER BY c.lastname,c.firstName ;
+--
+-- --count total number of users by each role
+-- SELECT r.role_id, count(user_id) total_Number_Of_Users
+--     FROM  role r
+--         INNER JOIN tbuser u ON r.role_id=U.role_id
+--         group by R.role_id
+-- ORDER BY R.role_id ;
 
 
 
