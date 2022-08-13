@@ -63,7 +63,7 @@ function addToDoListItem() {
   const dueDate = document.getElementById("addDueDate").value;
   const todoID = document.getElementById("searchTodoID").value;
 
-  const data = {
+  const params = {
     clientId: clientID,
     complete: false,
     description: description,
@@ -73,20 +73,17 @@ function addToDoListItem() {
     title: title,
     todoId: todoID,
   };
-  const xhr = new XMLHttpRequest();
-  const url = "http://localhost:8080/todos/add";
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      const json = JSON.parse(xhr.responseText);
-      console.log(xhr.status);
-    }
-  };
 
-  const body = JSON.stringify(data);
-  xhr.send(body);
-  closeAddForm();
+  const options = {
+    method: 'POST',
+    headers: {
+        // 'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( params )
+};
+fetch( 'http://localhost:8080/todos/add', options )
+closeAddForm();
 }
 
 function editToDoListItem() {
@@ -106,7 +103,7 @@ function editToDoListItem() {
     completeStatus = false;
   }
 
-  const data = {
+  const params = {
     clientId: clientID,
     complete: completeStatus,
     description: description,
@@ -116,20 +113,18 @@ function editToDoListItem() {
     title: title,
     todoId: todoID,
   };
-  const xhr = new XMLHttpRequest();
-  const url = "http://localhost:8080/todos/update";
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      const json = JSON.parse(xhr.responseText);
-      console.log(xhr.status);
-    }
-  };
 
-  const body = JSON.stringify(data);
-  xhr.send(body);
-  closeEditForm();
+  const options = {
+    method: 'POST',
+    headers: {
+        // 'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( params )
+};
+fetch( 'http://localhost:8080/todos/update', options ) //TBA do something with the response later
+
+closeEditForm();
 }
 
 //--------------------------------------Sorting & Filling Table-------------------------------//
