@@ -1,8 +1,12 @@
 //THINGS THAT NEED TO BE FIXED
 // 1. Find a way to automatically get toDoID for editing
 // 2. Change 'ID' to 'iD', or vice versa
+// 3. loadIntoTable() won't work when run through the Submit(type:button) in the Add/Edit forms.
+//    Temp fix is to use Submit(type:submit).
+// 4. Both Add and Edit will randomly stop working with Submit(type:submit).
 
 document.addEventListener('DOMContentLoaded', loadIntoTableInitial());
+preventDefault();
 
 //-----------------------------------------Adding & Editing Table--------------------------//
 
@@ -24,11 +28,8 @@ function closeEditForm() {
 
 function searchResults() {
   const todoID = document.getElementById("searchTodoID").value;
-  console.log(todoID);
   const table = document.getElementById(todoID);
   const row = table.getElementsByTagName("td");
-  console.log(row);
-  console.log(row[1].innerText);
   document.getElementById("editTitle").value = row[1].innerText;
   document.getElementById("editTitle").disabled = false;
   document.getElementById("editDescription").value = row[2].innerText;
@@ -37,7 +38,6 @@ function searchResults() {
   document.getElementById("editPriority").disabled = false;
   let date = row[5].innerText; //required to change timestamp to date
   date = date.substring(0, date.length - 19);
-  console.log(date);
   document.getElementById("editDueDate").value = date;
   document.getElementById("editDueDate").disabled = false;
   document.getElementById("editLocation").value = row[6].innerText;
@@ -82,7 +82,9 @@ function addToDoListItem() {
     },
     body: JSON.stringify( params )
 };
-fetch( 'http://localhost:8080/todos/add', options )
+fetch('http://localhost:8080/todos/add',options)
+
+loadIntoTable();
 closeAddForm();
 }
 
@@ -124,20 +126,15 @@ function editToDoListItem() {
 };
 fetch( 'http://localhost:8080/todos/update', options ) //TBA do something with the response later
 
+loadIntoTable();
 closeEditForm();
 }
 
 //--------------------------------------Sorting & Filling Table-------------------------------//
 
-let urlSort = 1;
-
-function getSort(sort) {
-  //gets value of chosen Sort
-  urlSort = sort;
-  loadIntoTable();
-}
 async function loadIntoTable() {
   let url;
+  const urlSort = document.getElementById("comboSort").value;
 
   switch (
     urlSort //changes fetch URL depending on sort type
@@ -164,6 +161,7 @@ async function loadIntoTable() {
     // code block
   }
 
+
   const response = await fetch(url); //waits until completion
   const data = await response.json(); //waits until completion
 
@@ -178,7 +176,7 @@ async function loadIntoTable() {
     }
   }
 
-  console.log(col);
+  console.log("List run");
 
   //Gets the pre-existing table (with predetermined headers) ready by wiping it before insertion.
 
@@ -196,6 +194,7 @@ async function loadIntoTable() {
       if (j == 0) {
         //makes the tr's ID = todoID. This is used later when searching by todoID.
         tr.setAttribute("id", data[i][col[j]]);
+        console.log("List run2");
       }
       var tabCell = tr.insertCell(-1);
 
@@ -211,7 +210,6 @@ async function loadIntoTable() {
       } else if (j == 10) {
         //extra column used to record clientID, won't be rendered
         clientID = data2.clientId;
-        console.log(clientID);
         tabCell.innerHTML = clientID;
       } else {
         tabCell.innerHTML = data[i][col[j]];
@@ -251,8 +249,6 @@ async function loadIntoTableInitial() {
     }
   }
 
-  console.log(col);
-
   //Gets the pre-existing table (with predetermined headers) ready by wiping it before insertion.
 
   const table = document.getElementById("table");
@@ -284,7 +280,6 @@ async function loadIntoTableInitial() {
       } else if (j == 10) {
         //extra column used to record clientID, won't be rendered
         clientID = data2.clientId;
-        console.log(clientID);
         tabCell.innerHTML = clientID;
       } else {
         tabCell.innerHTML = data[i][col[j]];
@@ -302,7 +297,6 @@ const params = {
   homePhone:"",
   email:""
 };
-//console.log(params);
 const options = {
   method: 'POST',
   headers: {

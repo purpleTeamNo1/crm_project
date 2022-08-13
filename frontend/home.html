@@ -75,7 +75,7 @@
                 
                 </div>
                 <div class="drop-down-filled-dis">
-                  <select id="comboSort" onchange="getSort(value)">
+                  <select id="comboSort" onchange="loadIntoTable()">
                     <option value=1>ID</option>
                     <option value=2>Priority</option>
                     <option value=3>Name (Last)</option>
@@ -141,7 +141,7 @@
             <input type="date" name="DueDate" id="addDueDate" 
           value="2022-08-09" min="2022-08-09" max="2032-08-09">
         
-            <button type="submit" class="btn" onclick="addToDoListItem()">Submit</button>
+            <button type="button" class="btn" onclick="addToDoListItem()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
           </form>
         </div>
@@ -187,7 +187,7 @@
           <input type="radio" id="completeFalse" name="completeCheck" value=false required disabled>
           <label for="completeFalse">No</label><br>
         
-            <button type="submit" class="btn" onclick="editToDoListItem()">Submit</button>
+            <button type="button" class="btn" onclick="editToDoListItem()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
           </form>
         </div>
