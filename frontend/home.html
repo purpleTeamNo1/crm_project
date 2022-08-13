@@ -120,13 +120,14 @@
             <input type="text" placeholder="" name="Title" id="addTitle" required>
         
             <label for="description"><b>Description</b></label>
-            <input type="text" placeholder="" name="Description" id="addDescription" required>
+            <input type="text" placeholder="" name="Description" id="addDescription">
 
             <label for="location"><b>Location</b></label>
             <input type="text" placeholder="" name="Location" id="addLocation">
 
             <label for="clientid"><b>Client ID</b></label>
-            <input type="text" placeholder="" name="ClientID" id="addClientID">
+            <select name="clientID" id="addClientID" required>
+            </select>
 
             <label for="priority"><b>Priority</b></label>
             <select id="addPriority" name="Priority">
@@ -159,16 +160,17 @@
             <input type="text" placeholder="" name="Title" id="editTitle" required disabled>
         
             <label for="description"><b>Description</b></label>
-            <input type="text" placeholder="" name="Description" id="editDescription" required disabled>
+            <input type="text" placeholder="" name="Description" id="editDescription"disabled>
 
             <label for="location"><b>Location</b></label>
-            <input type="text" placeholder="" name="Location" id="editLocation" required disabled>
+            <input type="text" placeholder="" name="Location" id="editLocation"disabled>
 
             <label for="clientid"><b>Client ID</b></label>
-            <input type="text" placeholder="" name="ClientID" id="editClientID" required disabled>
+            <select name="clientID" id="editClientID" required disabled>
+            </select>
 
             <label for="priority"><b>Priority</b></label>
-            <select name="Priority" id="editPriority" disabled>
+            <select name="Priority" id="editPriority" disabled required>
               <option value=1>1</option>
               <option value=2>2</option>
               <option value=3>3</option>
@@ -185,7 +187,7 @@
           <input type="radio" id="completeFalse" name="completeCheck" value=false required disabled>
           <label for="completeFalse">No</label><br>
         
-            <button type="submit" class="btn" onclick="editToDoListItem()">Submit</button>
+            <button type="button" class="btn" onclick="editToDoListItem()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
           </form>
         </div>

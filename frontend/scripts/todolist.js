@@ -1,9 +1,10 @@
 //THINGS THAT NEED TO BE FIXED
-// 1. Make it so that loadIntoTable() is run when the page is loaded
+// 1. Find a way to automatically get toDoID for editing
+// 2. Change 'ID' to 'iD', or vice versa
 
 document.addEventListener('DOMContentLoaded', loadIntoTableInitial());
 
-//vvvvvvvvvvvvvvv Adding & Editing Table vvvvvvvvvvvvvvv
+//-----------------------------------------Adding & Editing Table--------------------------//
 
 function openAddForm() {
   document.getElementById("myAddForm").style.display = "block";
@@ -85,6 +86,7 @@ function addToDoListItem() {
 
   const body = JSON.stringify(data);
   xhr.send(body);
+  closeAddForm();
 }
 
 function editToDoListItem() {
@@ -95,6 +97,7 @@ function editToDoListItem() {
   const priority = document.getElementById("editPriority").value;
   const dueDate = document.getElementById("editDueDate").value;
   const todoID = document.getElementById("searchTodoID").value;
+
   let completeStatus;
   if (document.getElementById("completeTrue").checked == true) {
     completeStatus = true;
@@ -126,9 +129,10 @@ function editToDoListItem() {
 
   const body = JSON.stringify(data);
   xhr.send(body);
+  closeEditForm();
 }
 
-//vvvvvvvvvvvvvvv Sorting & Filling Table vvvvvvvvvvvvvv
+//--------------------------------------Sorting & Filling Table-------------------------------//
 
 let urlSort = 1;
 
@@ -220,11 +224,26 @@ async function loadIntoTable() {
     }
   }
 }
-async function loadIntoTableInitial() {//Used to load table when page loads. Find a way to get rid of this later.
+//Used to load table when page loads.  Find a way to get rid of this later, there should be a way to just call loadIntoTable().
+
+async function loadIntoTableInitial() {
+  getAllClients();
   let url = "http://localhost:8080/todos/findAll?page=0&size=50&sortBy=todoId";
 
   const response = await fetch(url); //waits until completion
   const data = await response.json(); //waits until completion
+
+  //Filling dropdown
+  // let dropdown = document.getElementById('addClientID');
+  // dropdown.length = 0;
+  // let option;
+  // for (let i = 0; i < data.length; i++) {
+  //   data2 = data[i].client;
+  //   fullName = data2.firstname + " " + data2.lastName;
+  //   option = document.createElement('option');
+  //   option.text = fullName
+  //   dropdown.add(option);
+  // }
 
   //Checks to see how many columns the table needs
 
@@ -277,4 +296,46 @@ async function loadIntoTableInitial() {//Used to load table when page loads. Fin
       }
     }
   }
+}
+//----------------------------------Other Scripts-------------------------------------------//
+async function getAllClients() {
+   //Gets all clients from DB and fills the dropdown boxes for the Add/Edit form
+const params = {
+  firstName:"",
+  lastName:"",
+  cellPhone:"",
+  homePhone:"",
+  email:""
+};
+//console.log(params);
+const options = {
+  method: 'POST',
+  headers: {
+      // 'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify( params )
+};
+let url = "http://localhost:8080/client/findByDync";
+
+const response = await fetch(url, options); //waits until completion
+const data = await response.json(); //waits until completion
+
+let dropdown = document.getElementById('addClientID');
+let dropdown2 = document.getElementById('editClientID');
+dropdown.length = 0;
+dropdown2.length = 0;
+let option;
+for (let i = 0; i < data.length; i++) {
+  fullName = data[i].firstname + " " + data[i].lastName;
+  option = document.createElement('option');
+  option2 = document.createElement('option');
+  option.text = fullName
+  option2.text = fullName
+  option.value = data[i].clientId;
+  option2.value = data[i].clientId;
+  dropdown.add(option);
+  dropdown2.add(option2);
+}
+
 }
