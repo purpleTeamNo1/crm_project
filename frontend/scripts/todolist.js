@@ -5,7 +5,7 @@
 //    Temp fix is to use Submit(type:submit).
 // 4. Both Add and Edit will randomly stop working with Submit(type:submit).
 
-document.addEventListener('DOMContentLoaded', loadIntoTableInitial());
+document.addEventListener("DOMContentLoaded", loadIntoTableInitial());
 preventDefault();
 
 //-----------------------------------------Adding & Editing Table--------------------------//
@@ -75,17 +75,19 @@ function addToDoListItem() {
   };
 
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-        // 'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+      // 'Accept': 'application/json, text/plain, */*',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify( params )
-};
-fetch('http://localhost:8080/todos/add',options)
-
-loadIntoTable();
-closeAddForm();
+    body: JSON.stringify(params),
+  };
+  fetch("http://localhost:8080/todos/add", options)
+    .then((response) => response.json)
+    .then((response) => {
+      loadIntoTable();
+      closeAddForm();
+    });
 }
 
 function editToDoListItem() {
@@ -117,17 +119,19 @@ function editToDoListItem() {
   };
 
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-        // 'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+      // 'Accept': 'application/json, text/plain, */*',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify( params )
-};
-fetch( 'http://localhost:8080/todos/update', options ) //TBA do something with the response later
-
-loadIntoTable();
-closeEditForm();
+    body: JSON.stringify(params),
+  };
+  fetch("http://localhost:8080/todos/update", options) //TBA do something with the response later
+    .then((response) => response.json)
+    .then((response) => {
+      loadIntoTable();
+      closeEditForm();
+    });
 }
 
 //--------------------------------------Sorting & Filling Table-------------------------------//
@@ -160,7 +164,6 @@ async function loadIntoTable() {
     default:
     // code block
   }
-
 
   const response = await fetch(url); //waits until completion
   const data = await response.json(); //waits until completion
@@ -289,42 +292,41 @@ async function loadIntoTableInitial() {
 }
 //----------------------------------Other Scripts-------------------------------------------//
 async function getAllClients() {
-   //Gets all clients from DB and fills the dropdown boxes for the Add/Edit form
-const params = {
-  firstName:"",
-  lastName:"",
-  cellPhone:"",
-  homePhone:"",
-  email:""
-};
-const options = {
-  method: 'POST',
-  headers: {
+  //Gets all clients from DB and fills the dropdown boxes for the Add/Edit form
+  const params = {
+    firstName: "",
+    lastName: "",
+    cellPhone: "",
+    homePhone: "",
+    email: "",
+  };
+  const options = {
+    method: "POST",
+    headers: {
       // 'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-  },
-  body: JSON.stringify( params )
-};
-let url = "http://localhost:8080/client/findByDync";
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(params),
+  };
+  let url = "http://localhost:8080/client/findByDync";
 
-const response = await fetch(url, options); //waits until completion
-const data = await response.json(); //waits until completion
+  const response = await fetch(url, options); //waits until completion
+  const data = await response.json(); //waits until completion
 
-let dropdown = document.getElementById('addClientID');
-let dropdown2 = document.getElementById('editClientID');
-dropdown.length = 0;
-dropdown2.length = 0;
-let option;
-for (let i = 0; i < data.length; i++) {
-  fullName = data[i].firstname + " " + data[i].lastName;
-  option = document.createElement('option');
-  option2 = document.createElement('option');
-  option.text = fullName
-  option2.text = fullName
-  option.value = data[i].clientId;
-  option2.value = data[i].clientId;
-  dropdown.add(option);
-  dropdown2.add(option2);
-}
-
+  let dropdown = document.getElementById("addClientID");
+  let dropdown2 = document.getElementById("editClientID");
+  dropdown.length = 0;
+  dropdown2.length = 0;
+  let option;
+  for (let i = 0; i < data.length; i++) {
+    fullName = data[i].firstname + " " + data[i].lastName;
+    option = document.createElement("option");
+    option2 = document.createElement("option");
+    option.text = fullName;
+    option2.text = fullName;
+    option.value = data[i].clientId;
+    option2.value = data[i].clientId;
+    dropdown.add(option);
+    dropdown2.add(option2);
+  }
 }

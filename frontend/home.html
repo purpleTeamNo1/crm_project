@@ -1,198 +1,206 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/00-login.css" />
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"/>
-    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="css/globals.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script type="text/javascript" src="scripts/todolist.js"></script>
-    <script type="text/javascript" src="./scripts/login.js"></script>
-    <title>Home</title>
-  </head>
-  <body>
-    <input type="hidden" id="anPageName" name="page" value="page-template" />
-    <div class="container-center-horizontal">
-      <div class="page-template screen">
-        <div class="topbar">
-          <div class="overlap-group">
-            <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
-            <div class="button-raised-filled-left-disabled-theme">
-              <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
-                <span class="mdc-button__ripple"></span>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
-                <span class="mdc-button__label">Logout</span>
-              </button>
-              <script>
-                mdc.autoInit();
-                new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
-              </script>
-            </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/00-login.css" />
+  <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+  <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" />
+  <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+  <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script type="text/javascript"
+    src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script type="text/javascript" src="scripts/todolist.js"></script>
+  <script type="text/javascript" src="./scripts/login.js"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  <input type="hidden" id="anPageName" name="page" value="page-template" />
+  <div class="container-center-horizontal">
+    <div class="page-template screen">
+      <div class="topbar">
+        <div class="overlap-group">
+          <img class="logo-dark-blue-eng-chn-jw" src="img/logo-dark-blue-eng-chn-jw-1@1x.png" />
+          <div class="button-raised-filled-left-disabled-theme">
+            <button class="mdc-button mdc-button--raised" data-id="anima-widget" onclick="logout()">
+              <span class="mdc-button__ripple"></span>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">logout</i>
+              <span class="mdc-button__label">Logout</span>
+            </button>
+            <script>
+              mdc.autoInit();
+              new mdc.ripple.MDCRipple(document.querySelector(".button-raised-filled-left-disabled-theme .mdc-button"));
+            </script>
           </div>
         </div>
-        <div class="flex-row">
-          <div class="sidebar">
-            <div class="home">
-              <img class="icon" src="img/ic-home-1@1x.png" />
-              <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
-            </div>
-            <div class="client-management">
-              <img class="icon" src="img/ic-calendar-1@1x.png" />
-              <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
-                Management</a></div>
-            </div>
-            <div class="sidebar-item">
-              <img class="ic_invoice" src="img/ic-invoice@1x.png" />
-              <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
-                Management</a></div>
-            </div>
-            <div class="sidebar-item">
-              <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
-              <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
-            </div>
+      </div>
+      <div class="flex-row">
+        <div class="sidebar">
+          <div class="home">
+            <img class="icon" src="img/ic-home-1@1x.png" />
+            <div class="label-home poppins-medium-mirage-14px"><a href="home.html">Home</a></div>
           </div>
-          <div class="flex-col">
-            <div class="page-header">DASHBOARD</div>
-            <div class="content-container border-1px-dove-gray">
-              <div class="flex-row-1">
-                <div class="flex-col-1">
-                  <div class="title">General To Do List</div>
-                  <div class="buttons">
-                    <!-- Buttons Start -->
+          <div class="client-management">
+            <img class="icon" src="img/ic-calendar-1@1x.png" />
+            <div class="label-client-management poppins-medium-mirage-14px"><a href="client.html">Client
+                Management</a></div>
+          </div>
+          <div class="sidebar-item">
+            <img class="ic_invoice" src="img/ic-invoice@1x.png" />
+            <div class="label-product-management poppins-medium-mirage-14px"><a href="product.html">Product
+                Management</a></div>
+          </div>
+          <div class="sidebar-item">
+            <img class="ic_dashboard" src="img/ic-dashboard-10@1x.png" />
+            <div class="label-analytics poppins-medium-mirage-14px"><a href="analytics.html">Analytics</a></div>
+          </div>
+        </div>
+        <div class="flex-col">
+          <div class="page-header">DASHBOARD</div>
+          <div class="content-container border-1px-dove-gray">
+            <div class="flex-row-1">
+              <div class="flex-col-1">
+                <div class="title">General To Do List</div>
+                <div class="buttons">
+                  <!-- Buttons Start -->
 
-                    <input type="image" src="img/newbutton.png" onclick="openAddForm()" />
-                    <input type="image" src="img/editbutton.png" onclick="openEditForm()"/>
-                    </div>
-                    <!-- Buttons Done -->
-                
+                  <input type="image" src="img/newbutton.png" onclick="openAddForm()" />
+                  <input type="image" src="img/editbutton.png" onclick="openEditForm()" />
                 </div>
-                <div class="drop-down-filled-dis">
-                  <select id="comboSort" onchange="loadIntoTable()">
-                    <option value=1>ID</option>
-                    <option value=2>Priority</option>
-                    <option value=3>Name (Last)</option>
-                    <option value=4>Due Date</option>
-                  </select>
-                </div>
+                <!-- Buttons Done -->
+
               </div>
-              <div class="lorem-ipsum-dolor-si">
-                <table class="table" table id ="table">
-                  <thead>
-                    <tr>
-                      <th id="th1">ID</th>
-                      <th id="th2">Title</th>
-                      <th id="th3">Description</th>
-                      <th id="th4">Priority</th>
-                      <th id="th5">Last Update</th>
-                      <th id="th6">Due Date</th>
-                      <th id="th7">Location</th>
-                      <th id="th8">Client</th>
-                      <th id="th9">Completion</th>
-                      <th id="th10">ClientID</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- tbody filled by script -->
-                  </tbody>
-                </table>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+              <div class="drop-down-filled-dis">
+                <select id="comboSort" onchange="loadIntoTable()">
+                  <option value=1>ID</option>
+                  <option value=2>Priority</option>
+                  <option value=3>Name (Last)</option>
+                  <option value=4>Due Date</option>
+                </select>
+              </div>
+            </div>
+            <div class="lorem-ipsum-dolor-si">
+              <table class="table" table id="table">
+                <thead>
+                  <tr>
+                    <th id="th1">ID</th>
+                    <th id="th2">Title</th>
+                    <th id="th3">Description</th>
+                    <th id="th4">Priority</th>
+                    <th id="th5">Last Update</th>
+                    <th id="th6">Due Date</th>
+                    <th id="th7">Location</th>
+                    <th id="th8">Client</th>
+                    <th id="th9">Completion</th>
+                    <th id="th10">ClientID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- tbody filled by script -->
+                </tbody>
+              </table>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                crossorigin="anonymous"></script>
               </p>
             </div>
 
           </div>
-          
-          </div>
+
         </div>
-        <!-- Add To Do List Form Start -->
-        <div class="form-popup-add" id="myAddForm">
-          <form class="form-container">
-            <h1>NEW To Do List Item</h1>
-        
-            <label for="title"><b>Title</b></label>
-            <input type="text" placeholder="" name="Title" id="addTitle" required>
-        
-            <label for="description"><b>Description</b></label>
-            <input type="text" placeholder="" name="Description" id="addDescription">
+      </div>
+      <!-- Add To Do List Form Start -->
+      <div class="form-popup-add" id="myAddForm">
+        <form class="form-container">
+          <h1>NEW To Do List Item</h1>
 
-            <label for="location"><b>Location</b></label>
-            <input type="text" placeholder="" name="Location" id="addLocation">
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="" name="Title" id="addTitle" required>
 
-            <label for="clientid"><b>Client ID</b></label>
-            <select name="clientID" id="addClientID" required>
-            </select>
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="" name="Description" id="addDescription">
 
-            <label for="priority"><b>Priority</b></label>
-            <select id="addPriority" name="Priority">
-              <option value=1>1</option>
-              <option value=2>2</option>
-              <option value=3>3</option>
-              <option value=4>4</option>
-            </select>
+          <label for="location"><b>Location</b></label>
+          <input type="text" placeholder="" name="Location" id="addLocation">
 
-            <label for="duedate"><b>Due Date</b></label>
-            <input type="date" name="DueDate" id="addDueDate" 
-          value="2022-08-09" min="2022-08-09" max="2032-08-09">
-        
-            <button type="button" class="btn" onclick="addToDoListItem()">Submit</button>
-            <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
-          </form>
-        </div>
-        <!-- Add To Do List Form Done -->
-        <!-- Edit To Do List Form Start -->
-        <div class="form-popup-edit" id="myEditForm">
-          <form class="form-container">
-            <h1>EDIT To Do List Item</h1>
+          <label for="clientid"><b>Client ID</b></label>
+          <select name="clientID" id="addClientID" required>
+          </select>
 
-            <label for="clientid"><b>1. Load the table<br>
+          <label for="priority"><b>Priority</b></label>
+          <select id="addPriority" name="Priority">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+          </select>
+
+          <label for="duedate"><b>Due Date</b></label>
+          <input type="date" name="DueDate" id="addDueDate" value="2022-08-09" min="2022-08-09" max="2032-08-09">
+
+          <button type="button" class="btn" onclick="addToDoListItem()">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeAddForm()">Close</button>
+        </form>
+      </div>
+      <!-- Add To Do List Form Done -->
+      <!-- Edit To Do List Form Start -->
+      <div class="form-popup-edit" id="myEditForm">
+        <form class="form-container">
+          <h1>EDIT To Do List Item</h1>
+
+          <label for="clientid"><b>1. Load the table<br>
               2. Search by To Do ID</b></label>
-            <input type="textarea" placeholder="" name="todoID" id="searchTodoID">
-            <button type="button" onclick="searchResults()">Search</button><br><br>
-        
-            <label for="title"><b>Title</b></label>
-            <input type="text" placeholder="" name="Title" id="editTitle" required disabled>
-        
-            <label for="description"><b>Description</b></label>
-            <input type="text" placeholder="" name="Description" id="editDescription"disabled>
+          <input type="textarea" placeholder="" name="todoID" id="searchTodoID">
+          <button type="button" onclick="searchResults()">Search</button><br><br>
 
-            <label for="location"><b>Location</b></label>
-            <input type="text" placeholder="" name="Location" id="editLocation"disabled>
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="" name="Title" id="editTitle" required disabled>
 
-            <label for="clientid"><b>Client ID</b></label>
-            <select name="clientID" id="editClientID" required disabled>
-            </select>
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="" name="Description" id="editDescription" disabled>
 
-            <label for="priority"><b>Priority</b></label>
-            <select name="Priority" id="editPriority" disabled required>
-              <option value=1>1</option>
-              <option value=2>2</option>
-              <option value=3>3</option>
-              <option value=4>4</option>
-            </select>
+          <label for="location"><b>Location</b></label>
+          <input type="text" placeholder="" name="Location" id="editLocation" disabled>
 
-            <label for="duedate"><b>Due Date</b></label>
-            <input type="date" name="DueDate" id="editDueDate" 
-          value="2022-08-09" min="2022-08-09" max="2032-08-09" disabled><br><br>
+          <label for="clientid"><b>Client ID</b></label>
+          <select name="clientID" id="editClientID" required disabled>
+          </select>
+
+          <label for="priority"><b>Priority</b></label>
+          <select name="Priority" id="editPriority" disabled required>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+          </select>
+
+          <label for="duedate"><b>Due Date</b></label>
+          <input type="date" name="DueDate" id="editDueDate" value="2022-08-09" min="2022-08-09" max="2032-08-09"
+            disabled><br><br>
 
           <label><b>Completed?</b></label><br>
           <input type="radio" id="completeTrue" name="completeCheck" value=true required disabled>
           <label for="completeTrue">Yes</label><br>
           <input type="radio" id="completeFalse" name="completeCheck" value=false required disabled>
           <label for="completeFalse">No</label><br>
-        
-            <button type="button" class="btn" onclick="editToDoListItem()">Submit</button>
-            <button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
-          </form>
-        </div>
-        <!-- Edit To Do List Form Done -->
+
+          <button type="button" class="btn" onclick="editToDoListItem()">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
+        </form>
       </div>
+      <!-- Edit To Do List Form Done -->
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
